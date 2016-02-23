@@ -1,0 +1,312 @@
+@import "common-mixins.less";
+
+@background-color: #faefd8;
+@field-font-color: #666666;
+
+html {
+    padding: 0;
+    margin: 0;
+}
+body{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: @background-color;
+    padding: 0;
+    margin: 0;
+
+    &.lock-mode {
+        overflow:hidden;
+    }
+}
+.template-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#scene-container{
+    position: absolute;
+    width: 100%;
+    height: auto;
+//    overflow: hidden;
+}
+#invisible-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.demo-background{
+
+    @w: 1920px;
+    @h: 4400px;
+
+    position: absolute;
+    width: @w;
+    height: @h;
+
+    left: 50%;
+    margin-left: -@w * .5;
+    .image-bg('demo-background.jpg');
+}
+
+/** mixins **/
+.select-default(){
+
+
+
+    .select-icon{
+        position: absolute;
+        right:0;
+        top:0;
+        background: url(../images/drop_down_icon.png) 0 0;
+        width: 32px;
+        height: 32px;
+        pointer-events: none;
+        background-size: cover;
+    }
+
+    & select{
+
+        background: transparent;
+
+        width: 100%;
+        height: 100%;
+        padding: 5px 5px 5px 5px;
+        border: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        color: @field-font-color;
+
+
+        cursor: pointer;
+
+        & option{
+            color: @field-font-color;
+        }
+    }
+}
+
+/** video create **/
+.video-create{
+
+    position: absolute;
+    left:50%;
+    top:0;
+
+    .video-create-form-trigger{
+        position: absolute;
+        width: 237px;
+        height: 50px;
+
+//        top:2644px;
+//        left:-457px;
+
+        background: rgba(55,255,255,.5);
+        opacity: 0;
+
+        cursor: pointer;
+
+        &:hover{
+            opacity: 1;
+        }
+
+    }
+
+    .trigger-1{
+
+    }
+
+    .my-mixin(1, -457px, 2644px);
+    .my-mixin(2, -135px, 2694px);
+    .my-mixin(3, 192px, 2645px);
+
+    .my-mixin(@index; @left; @top;){
+        .trigger-@{index}{
+            left: @left;
+            top: @top;
+        }
+    }
+}
+
+/** video create form **/
+.video-create-form{
+    visibility: hidden;
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+
+    z-index: 100;
+
+    .cover{
+        position: absolute;
+        width: 100%;
+        height:100%;
+        background: rgba(0,0,0,.8);
+    }
+    .form-container{
+
+        .centralized-div(50%, 50%, 871px, 798px);
+
+//        .image-bg("demo-video-form.jpg");
+        .image-bg("video-form-base.jpg");
+
+        .item-1, .item-2, .item-3{
+            position: absolute;
+
+            .left-part{
+
+                position: relative;
+                background: #818181;
+//                background: rgba(255,0,0,.3);
+                float: left;
+
+                cursor: pointer;
+
+                .help-text{
+                    .abs-div(16px, 16px, 106px, 39px,0 ,0 , "video-form-user-image-help-text.png");
+                }
+                .user-image{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1;
+                }
+
+                input{
+                    visibility: hidden;
+                }
+            }
+
+            .right-part{
+                position: relative;
+                float:left;
+                margin-left: 22px;
+                margin-top: 16px;
+
+                .item-text{
+                    .abs-div(0px, 0px, 260px, 80px,0 ,0 , "video-form-item-text.png");
+                }
+                .btn-select-image{
+                    cursor: pointer;
+                    .abs-div(0px, 27px, 80px, 25px,0 ,0 , "btn-select-image.png");
+                }
+
+                .text-select{
+                    position: absolute;
+                    top:90px;
+                    width: 280px;
+                    height:30px;
+                    background: #ffffff;
+
+                    .select-default();
+                }
+
+            }
+        }
+        .item-1{
+            top:187px;
+            left:62px;
+
+            .left-part{
+
+                width: 243px;
+                height: 150px;
+
+                .number-text{
+                    position: absolute;
+                    right:27px;
+                    bottom:13px;
+                    width: 25px;
+                    height: 93px;
+                    .image-bg('video-form-number-1.png');
+                }
+
+            }
+        }
+        .item-2{
+            top:361px;
+            left:62px;
+
+            .left-part{
+
+                width: 243px;
+                height: 150px;
+
+                .number-text{
+                    position: absolute;
+                    right:12px;
+                    bottom:13px;
+                    width: 65px;
+                    height: 95px;
+                    .image-bg('video-form-number-2.png');
+                }
+
+            }
+        }
+        .item-3{
+            top:538px;
+            left:62px;
+
+            .left-part{
+
+                width: 156px;
+                height:206px;
+
+                .number-text{
+                    position: absolute;
+                    right:12px;
+                    bottom:13px;
+                    width: 64px;
+                    height: 97px;
+                    .image-bg('video-form-number-3.png');
+                }
+
+            }
+        }
+
+
+        .bottom-group{
+
+            position: absolute;
+            bottom:0;
+            right: 0;
+
+            .check-privacy{
+                position: absolute;
+                right:547px;
+                bottom: 54px;
+            }
+
+            .check-fb-share{
+                position: absolute;
+                right:547px;
+                bottom: 34px;
+            }
+
+            .btn-send{
+                cursor: pointer;
+                position: absolute;
+                right:32px;
+                bottom:32px;
+                width: 224px;
+                height: 56px;
+                .image-bg("btn-send.png");
+                //.abs-div(614px, 712px, 224px, 56px,0 ,0 , "btn-send.png");
+            }
+
+        }
+
+
+        .btn-close{
+            cursor: pointer;
+            .abs-div(813px, 15px, 46px, 46px,0 ,0 , "btn-close.png");
+        }
+    }
+}

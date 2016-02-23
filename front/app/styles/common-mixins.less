@@ -1,0 +1,94 @@
+/** common mixins **/
+.abs-div(@left; @top; @width; @height; @marginLeft:0; @marginTop:0; @image-src: none; @background-size: cover;){
+    position: absolute;
+    left: @left;
+    top: @top;
+    width: @width;
+    height: @height;
+    margin-left: @marginLeft;
+    margin-top: @marginTop;
+    & when not(@image-src = none){
+        .image-bg(@image-src, @background-size);
+    }
+}
+.centralized-div(@left; @top; @width; @height; @offsetX:0; @offsetY:0;){
+    position: absolute;
+    left: @left;
+    top: @top;
+    width: @width;
+    height: @height;
+    margin-left: -@width*.5 + @offsetX;
+    margin-top: -@height*.5 + @offsetY;
+}
+.label-centralize(@cwidth, @cheight, @width, @height, @offsetX: 0, @offsetY: 0, @scale: 1){
+    position: absolute;
+
+
+    @w: @width * @scale;
+    @h: @height * @scale;
+
+    width: percentage(@w/@cwidth);
+    height: percentage(@h/@cheight);
+    left: percentage((-@w*.5 + @offsetX)/@cwidth);
+    top: percentage((@offsetY)/@cheight);
+
+}
+
+.unselectable(){
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.percent-div(@cwidth; @cheight; @width; @height; @left: 0; @top: 0; @left-percent: -.5; @top-percent: -.5; @image-src: none; @background-size: cover; @background-color: none; @scale: 1;)
+{
+    position: absolute;
+
+    @w: @width * @scale;
+    @h: @height * @scale;
+
+    width: percentage(@w/@cwidth);
+    height: percentage(@h/@cheight);
+    left: percentage((@left + @w*@left-percent)/@cwidth);
+    top: percentage((@top + @h*@top-percent)/@cheight);
+    & when not(@image-src = none){
+        .image-bg(@image-src, @background-size);
+    }
+    & when not(@background-color = none)
+    {
+        background-color: @background-color;
+    }
+    //background: ;
+}
+.image-bg(@src; @background-size: auto;){
+    @image-path: "../images/";
+    background-image: url("@{image-path}@{src}");
+    background-size: @background-size;
+}
+.fade-button(@image-src, @background-offset: 0 -100%, @duration: .5s){
+    &:hover{
+        cursor: pointer;
+    }
+    .hover-clip{
+        position: absolute;
+        width: 100%;
+        height:100%;
+        .image-bg(@image-src);
+        background-position: @background-offset;
+        background-size: cover;
+
+        opacity: 0;
+        transition: opacity @duration ease-in;
+
+        &:hover{
+            opacity: 1;
+        }
+
+        &.selected{
+            opacity: 1;
+        }
+    }
+}

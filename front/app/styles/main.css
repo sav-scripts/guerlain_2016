@@ -1,0 +1,301 @@
+/** common mixins **/
+html {
+  padding: 0;
+  margin: 0;
+}
+body {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #faefd8;
+  padding: 0;
+  margin: 0;
+}
+body.lock-mode {
+  overflow: hidden;
+}
+.template-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+#scene-container {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+#invisible-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+}
+.demo-background {
+  position: absolute;
+  width: 1920px;
+  height: 4400px;
+  left: 50%;
+  margin-left: -960px;
+  background-image: url("../images/demo-background.jpg");
+  background-size: auto;
+}
+/** mixins **/
+/** video create **/
+.video-create {
+  position: absolute;
+  left: 50%;
+  top: 0;
+}
+.video-create .video-create-form-trigger {
+  position: absolute;
+  width: 237px;
+  height: 50px;
+  background: rgba(55, 255, 255, 0.5);
+  opacity: 0;
+  cursor: pointer;
+}
+.video-create .video-create-form-trigger:hover {
+  opacity: 1;
+}
+.video-create .trigger-1 {
+  left: -457px;
+  top: 2644px;
+}
+.video-create .trigger-2 {
+  left: -135px;
+  top: 2694px;
+}
+.video-create .trigger-3 {
+  left: 192px;
+  top: 2645px;
+}
+/** video create form **/
+.video-create-form {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+.video-create-form .cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+}
+.video-create-form .form-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 871px;
+  height: 798px;
+  margin-left: -435.5px;
+  margin-top: -399px;
+  background-image: url("../images/video-form-base.jpg");
+  background-size: auto;
+}
+.video-create-form .form-container .item-1,
+.video-create-form .form-container .item-2,
+.video-create-form .form-container .item-3 {
+  position: absolute;
+}
+.video-create-form .form-container .item-1 .left-part,
+.video-create-form .form-container .item-2 .left-part,
+.video-create-form .form-container .item-3 .left-part {
+  position: relative;
+  background: #818181;
+  float: left;
+  cursor: pointer;
+}
+.video-create-form .form-container .item-1 .left-part .help-text,
+.video-create-form .form-container .item-2 .left-part .help-text,
+.video-create-form .form-container .item-3 .left-part .help-text {
+  position: absolute;
+  left: 16px;
+  top: 16px;
+  width: 106px;
+  height: 39px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-form-user-image-help-text.png");
+  background-size: cover;
+}
+.video-create-form .form-container .item-1 .left-part .user-image,
+.video-create-form .form-container .item-2 .left-part .user-image,
+.video-create-form .form-container .item-3 .left-part .user-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.video-create-form .form-container .item-1 .left-part input,
+.video-create-form .form-container .item-2 .left-part input,
+.video-create-form .form-container .item-3 .left-part input {
+  visibility: hidden;
+}
+.video-create-form .form-container .item-1 .right-part,
+.video-create-form .form-container .item-2 .right-part,
+.video-create-form .form-container .item-3 .right-part {
+  position: relative;
+  float: left;
+  margin-left: 22px;
+  margin-top: 16px;
+}
+.video-create-form .form-container .item-1 .right-part .item-text,
+.video-create-form .form-container .item-2 .right-part .item-text,
+.video-create-form .form-container .item-3 .right-part .item-text {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 260px;
+  height: 80px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-form-item-text.png");
+  background-size: cover;
+}
+.video-create-form .form-container .item-1 .right-part .btn-select-image,
+.video-create-form .form-container .item-2 .right-part .btn-select-image,
+.video-create-form .form-container .item-3 .right-part .btn-select-image {
+  cursor: pointer;
+  position: absolute;
+  left: 0px;
+  top: 27px;
+  width: 80px;
+  height: 25px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/btn-select-image.png");
+  background-size: cover;
+}
+.video-create-form .form-container .item-1 .right-part .text-select,
+.video-create-form .form-container .item-2 .right-part .text-select,
+.video-create-form .form-container .item-3 .right-part .text-select {
+  position: absolute;
+  top: 90px;
+  width: 280px;
+  height: 30px;
+  background: #ffffff;
+}
+.video-create-form .form-container .item-1 .right-part .text-select .select-icon,
+.video-create-form .form-container .item-2 .right-part .text-select .select-icon,
+.video-create-form .form-container .item-3 .right-part .text-select .select-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: url(../images/drop_down_icon.png) 0 0;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  background-size: cover;
+}
+.video-create-form .form-container .item-1 .right-part .text-select select,
+.video-create-form .form-container .item-2 .right-part .text-select select,
+.video-create-form .form-container .item-3 .right-part .text-select select {
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  padding: 5px 5px 5px 5px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #666666;
+  cursor: pointer;
+}
+.video-create-form .form-container .item-1 .right-part .text-select select option,
+.video-create-form .form-container .item-2 .right-part .text-select select option,
+.video-create-form .form-container .item-3 .right-part .text-select select option {
+  color: #666666;
+}
+.video-create-form .form-container .item-1 {
+  top: 187px;
+  left: 62px;
+}
+.video-create-form .form-container .item-1 .left-part {
+  width: 243px;
+  height: 150px;
+}
+.video-create-form .form-container .item-1 .left-part .number-text {
+  position: absolute;
+  right: 27px;
+  bottom: 13px;
+  width: 25px;
+  height: 93px;
+  background-image: url("../images/video-form-number-1.png");
+  background-size: auto;
+}
+.video-create-form .form-container .item-2 {
+  top: 361px;
+  left: 62px;
+}
+.video-create-form .form-container .item-2 .left-part {
+  width: 243px;
+  height: 150px;
+}
+.video-create-form .form-container .item-2 .left-part .number-text {
+  position: absolute;
+  right: 12px;
+  bottom: 13px;
+  width: 65px;
+  height: 95px;
+  background-image: url("../images/video-form-number-2.png");
+  background-size: auto;
+}
+.video-create-form .form-container .item-3 {
+  top: 538px;
+  left: 62px;
+}
+.video-create-form .form-container .item-3 .left-part {
+  width: 156px;
+  height: 206px;
+}
+.video-create-form .form-container .item-3 .left-part .number-text {
+  position: absolute;
+  right: 12px;
+  bottom: 13px;
+  width: 64px;
+  height: 97px;
+  background-image: url("../images/video-form-number-3.png");
+  background-size: auto;
+}
+.video-create-form .form-container .bottom-group {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.video-create-form .form-container .bottom-group .check-privacy {
+  position: absolute;
+  right: 547px;
+  bottom: 54px;
+}
+.video-create-form .form-container .bottom-group .check-fb-share {
+  position: absolute;
+  right: 547px;
+  bottom: 34px;
+}
+.video-create-form .form-container .bottom-group .btn-send {
+  cursor: pointer;
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  width: 224px;
+  height: 56px;
+  background-image: url("../images/btn-send.png");
+  background-size: auto;
+}
+.video-create-form .form-container .btn-close {
+  cursor: pointer;
+  position: absolute;
+  left: 813px;
+  top: 15px;
+  width: 46px;
+  height: 46px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/btn-close.png");
+  background-size: cover;
+}

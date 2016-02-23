@@ -1,0 +1,24 @@
+{
+  "name": "guerlain2016",
+  "description": "guerlain2016",
+  "version": "0.0.0",
+  "devDependencies":{
+    "bower": "~1.2.8",
+    "grunt": "~0.4.2",
+    "matchdep": "",
+    "grunt-contrib-jshint": "",
+    "grunt-usemin": "^3.1.1",
+    "grunt-contrib-uglify": "^0.5.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-less": "",
+    "grunt-contrib-copy": "",
+    "grunt-contrib-clean": "",
+    "grunt-contrib-watch": "",
+    "grunt-express-server": "",
+    "grunt-contrib-cssmin": "",
+    "grunt-filerev": "",
+    "grunt-contrib-imagemin": "",
+    "imagemin-pngquant": "",
+    "grunt-newer": ""
+  }
+}
