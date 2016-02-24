@@ -159,21 +159,24 @@
         v1:
         [
             {
-                w: 242, h: 150,
+                w: 200, h: 150,
+                rw: 353, rh: 265,
                 texts: [
                     "video1, image 1, text1",
                     "video1, image 1, text2"
                 ]
             },
             {
-                w: 242, h: 150,
+                w: 200, h: 150,
+                rw: 353, rh: 265,
                 texts: [
                     "video1, image 2, text1",
                     "video1, image 2, text2"
                 ]
             },
             {
-                w: 156, h: 206,
+                w: 150, h: 200,
+                rw: 265, rh: 353,
                 texts: [
                     "video1, image 3, text1",
                     "video1, image 3, text2"
@@ -183,7 +186,8 @@
         v2:
         [
             {
-                w: 242, h: 150,
+                w: 200, h: 150,
+                rw: 353, rh: 265,
                 texts: [
                     "video2, image 1, text1",
                     "video2, image 1, text2"
@@ -191,13 +195,15 @@
             },
             {
                 w: 200, h: 150,
+                rw: 353, rh: 265,
                 texts: [
                     "video2, image 2, text1",
                     "video2, image 2, text2"
                 ]
             },
             {
-                w: 156, h: 206,
+                w: 150, h: 200,
+                rw: 265, rh: 353,
                 texts: [
                     "video2, image 3, text1",
                     "video2, image 3, text2"
@@ -207,27 +213,39 @@
         v3:
         [
             {
-                w: 242, h: 150,
+                w: 200, h: 150,
+                rw: 353, rh: 265,
                 texts: [
                     "video3, image 1, text1",
                     "video3, image 1, text2"
                 ]
             },
             {
-                w: 242, h: 150,
+                w: 200, h: 150,
+                rw: 353, rh: 265,
                 texts: [
                     "video3, image 2, text1",
                     "video3, image 2, text2"
                 ]
             },
             {
-                w: 242, h: 150,
+                w: 150, h: 200,
+                rw: 265, rh: 353,
                 texts: [
                     "video3, image 3, text1",
                     "video3, image 3, text2"
                 ]
             }
         ]
+    };
+
+    var _readyStatus =
+    {
+        all: false,
+        image: false,
+        text: false,
+        privacy: false,
+        fb: false
     };
 
     var $doms = {},
@@ -249,7 +267,31 @@
 
             $doms.btnSend = $doms.container.find(".btn-send").on("click", function()
             {
+                if(_readyStatus.all)
+                {
+                    sendToServer();
+                }
+                else if(!_readyStatus.image)
+                {
+                    alert('請上傳您的生活寫真照');
+                }
+                else if(!_readyStatus.text)
+                {
+                    alert('請選擇代表您風格的文字');
+                }
+                else if(!_readyStatus.privacy)
+                {
+                    alert('您必須同意我們的隱私權政策');
+                }
+                else if(!_readyStatus.fb)
+                {
+                    alert('您必須同意分享個人影片至 Facebook 塗鴉牆');
+                }
             });
+
+            $doms.checkPrivacy = $doms.container.find('.check-privacy').on("change", checkReadyStatus);
+
+            $doms.checkFbShare = $doms.container.find('.check-fb-share').on("change", checkReadyStatus);
 
             $doms.items = {};
             setupItem(1);
@@ -296,6 +338,20 @@
         {
             _currentIndex = index;
             resetImageItems();
+
+            $doms.checkPrivacy.prop("checked", false);
+            $doms.checkFbShare.prop("checked", false);
+
+            _readyStatus =
+            {
+                all: false,
+                image: false,
+                text: false,
+                privacy: false,
+                fb: false
+            };
+
+            $doms.btnSend.toggleClass("disable-mode", true);
 
             return _p;
         }
@@ -381,6 +437,11 @@
             $item.imageReady = false;
             loadFile($item);
         });
+
+        $item.textSelect.on("change", function()
+        {
+            checkReadyStatus();
+        });
     }
 
     function loadFile($item)
@@ -428,21 +489,24 @@
             scaleRate = iosFix? .5: 1;
 
         var imageSetting = _photoSettings["v"+_currentIndex][$item.index-1];
+        
+        var rw = imageSetting.rw;
+        var rh = imageSetting.rh;
 
         var canvas = $item.canvas;
-        canvas.width = imageSetting.w;
-        canvas.height = imageSetting.h;
+        canvas.width = rw;
+        canvas.height = rh;
 
         var ctx = canvas.getContext("2d");
-        var bound = Helper.getSize_cover(imageSetting.w, imageSetting.h, image.width, image.height);
+        var bound = Helper.getSize_cover(rw, rh, image.width, image.height);
 
-        var offsetX = (imageSetting.w-bound.width)*.5;
-        var offsetY = (imageSetting.h-bound.height)*.5;
+        var offsetX = (rw-bound.width)*.5;
+        var offsetY = (rh-bound.height)*.5;
 
         if(bound.ratio < 1)
         {
             $($item.canvas).detach();
-            $item.canvas = Helper.downScaleImage($item.image, bound.ratio, offsetX, offsetY, imageSetting.w, imageSetting.h);
+            $item.canvas = Helper.downScaleImage($item.image, bound.ratio, offsetX, offsetY, rw, rh);
             $item.userImage.append($item.canvas);
         }
         else
@@ -455,17 +519,48 @@
 
         $item.imageReady = true;
 
-        checkAllReady();
+        checkReadyStatus();
     }
 
-    function checkAllReady()
+    function checkReadyStatus()
     {
+        var wasAllReady = _readyStatus.all;
 
-        if($doms.items.i1.imageReady && $doms.items.i2.imageReady && $doms.items.i3.imageReady)
+        _readyStatus.image = ($doms.items.i1.imageReady && $doms.items.i2.imageReady && $doms.items.i3.imageReady);
+        _readyStatus.text =
+            $doms.items.i1.textSelect[0].selectedIndex != 0 &&
+            $doms.items.i2.textSelect[0].selectedIndex != 0 &&
+            $doms.items.i3.textSelect[0].selectedIndex != 0;
+
+        _readyStatus.privacy = $doms.checkPrivacy.prop("checked");
+        _readyStatus.fb = $doms.checkFbShare.prop("checked");
+
+        //_readyStatus.all = _readyStatus.image && _readyStatus.text && _readyStatus.privacy && _readyStatus.fb;
+        _readyStatus.all = _readyStatus.image;
+
+        if(wasAllReady != _readyStatus.all)
         {
-            console.log("all ready");
-            //Main.setBtnContinue("開始製作", sendToServer);
+            $doms.btnSend.toggleClass("disable-mode", !_readyStatus.all);
         }
+    }
+
+
+    function sendToServer()
+    {
+        var array = [], i, $item;
+        for(i=0;i<3;i++)
+        {
+            $item = $doms.items["i"+(i+1)];
+            array[i] = $item.canvas.toDataURL("image/jpeg", .95).replace(/^data:image\/jpeg;base64,/, "");
+        }
+
+        ServerProxy.start(_currentIndex, array, function(success)
+        {
+            if(success)
+            {
+                _p.hide();
+            }
+        });
     }
 
 }());

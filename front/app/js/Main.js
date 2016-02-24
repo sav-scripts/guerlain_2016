@@ -7,10 +7,15 @@
     {
         localSettings:
         {
-            fb_appid: "1124585734259271"
+            fb_appid: "1124585734259271",
+            //socketUrl: "ws://219.85.64.49:3005"
+            socketUrl: "ws://local.savorks.com:3005"
         },
         settings:
         {
+            //socketUrl: "ws://local.savorks.com:3005",
+            socketUrl: "ws://219.85.64.49:3005",
+
             fb_appid: "1120712347979943",
             fbPermissions: ['user_photos', 'publish_actions']
         },

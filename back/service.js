@@ -10,6 +10,8 @@ var Facebook = require('facebook-node-sdk'),
     utf8 = require('utf8'),
     vc = require("./video-creator");
 
+
+
 var _serial = 0,
     _userDic = {};
 
@@ -20,6 +22,29 @@ logger.info("video share service start at port: " + _port);
 server.on('connection', function(socket)
 {
     logger.info("on connect");
+
+    var _fb = new Facebook({ appID: '1120712347979943', secret: '26d329129e9f1ec34b37bebd9cba943d', fileUpload: true }),
+        _folderName,
+        _fb_uid,
+        userObj;
+
+
+    socket.on('close', function ()
+    {
+        if(userObj)
+        {
+            delete _userDic[userObj.id];
+
+
+            if(userObj.folderCreated)
+            {
+                del(['./tmp/' + userObj.id + "/"], {force:true}).then(function (paths)
+                {
+                    //logger.info("user folder: " + _folderName + " deleted");
+                });
+            }
+        }
+    });
 
     socket.on('message', function (data)
     {
@@ -41,10 +66,35 @@ server.on('connection', function(socket)
 
         if (obj.cmd == "sendImages")
         {
-            if(params.imageArray && params.imageArray.length == 3)
+            if(!params.accessToken || !params.fbUserId || !params.videoIndex ||
+                (params.videoIndex != 1 && params.videoIndex != 2 && params.videoIndex != 3))
             {
-                var userObj = createUser(),
-                    folderPath = './tmp/' + userObj.id + "/";
+                sendResponse(false, {error:"illegal params"});
+            }
+            else if(_userDic["u_" + params.fbUserId])
+            {
+                sendResponse(false, {error:"fb account already connected, please close extra connect"});
+            }
+            else if(!params.imageArray || params.imageArray.length != 3)
+            {
+                sendResponse(false, {error:"lack images"});
+            }
+            else
+            {
+                _fb_uid = params.fbUserId;
+
+                var id = "u_" + params.fbUserId;
+                userObj = _userDic[id] =
+                    {
+                        id: id,
+                        accessToken: params.accessToken,
+                        fbUid: params.fbUserId,
+                        folderCreated: false
+                    };
+
+                _fb.setAccessToken(userObj.accessToken);
+
+                var folderPath = './tmp/' + userObj.id + "/";
 
                 del([folderPath], {force:true}).then(function ()
                 {
@@ -57,29 +107,54 @@ server.on('connection', function(socket)
                         }
                         else
                         {
+                            userObj.folderCreated = true;
+
                             saveImages(params.imageArray, userObj.id, function(success)
                             {
                                 if(success)
                                 {
                                     //sendResponse();
-                                    sendEvent("create-progress", {status:"影片合成中..."});
+                                    //sendEvent("create-progress", {status:"影片合成中..."});
 
                                     logger.log("creating video for: " + userObj.id);
 
-                                    vc.streamCombine(userObj.id, function(err, data)
+                                    vc.streamCombine(userObj.id, params.videoIndex, function(err, data)
                                     {
-
                                         if(err)
                                         {
-                                            //sendEvent("create-progress", {status:"影片失敗, 錯誤原因: " + err});
                                             sendResponse(false, {error: "video create fail: " + err});
                                         }
                                         else
                                         {
-                                            var st = vc.settings;
+                                            var st = vc.settings,
+                                                timeCost = data.timeCost;
                                             logger.log("video created for: " + userObj.id + ", time cost: " + data.timeCost);
-                                            sendEvent("create-complete", {id:userObj.id, width: st.videoWidth, height: st.videoHeight, timeCost: data.timeCost, numImages: st.numImages});
+                                            //sendEvent("create-complete", {id:userObj.id, width: st.videoWidth, height: st.videoHeight, timeCost: data.timeCost, numImages: st.numImages, videoUrl: data.videoUrl});
+
+                                            sendEvent("create-progress", {status:"sharing"});
+
+                                            uploadVideo(userObj.id, function(err, data)
+                                            {
+                                                if(err)
+                                                {
+                                                    sendResponse(false, {error:err});
+                                                }
+                                                else
+                                                {
+                                                    //sendEvent("create-complete", {id:userObj.id, width: st.videoWidth, height: st.videoHeight, timeCost: timeCost, numImages: st.numImages, videoId: data.videoId});
+
+                                                    sendResponse(true, {id:userObj.id, width: st.videoWidth, height: st.videoHeight, timeCost: timeCost, numImages: st.numImages, videoId: data.videoId});
+
+                                                    setTimeout(function()
+                                                    {
+                                                        socket.close();
+                                                    }, 6000);
+                                                }
+                                            });
                                         }
+                                    }, function(updateResponse)
+                                    {
+                                        sendEvent("create-progress", updateResponse);
                                     });
 
 
@@ -94,11 +169,60 @@ server.on('connection', function(socket)
 
                 });
             }
-            else
-            {
-                sendResponse(false, {error:"lacking parameters"});
+        }
 
-            }
+        function uploadVideo(id, cb)
+        {
+            //var filePath = "@" + __dirname  + "\\tmp\\"+_folderName+"\\out.mp4";
+            //var filePath = videoUrl;
+            var filePath = "@" + __dirname + "/tmp/"+id+"/out.mp4";
+
+            var shareText = "some share description";
+            shareText = utf8.encode(shareText);
+
+
+            //sendResponse(true, {id:"none"});
+            //return;
+
+            _fb.api("/me/videos", 'post', {
+                source: filePath,
+                description: shareText
+            }, function(err, data)
+            {
+                if(err)
+                {
+                    logger.error("upload to facebook fail: " + err);
+                    //sendResponse(false, {error:'fail on sharing video'});
+                    cb.call(null, 'fail on uploading video');
+                }
+                else
+                {
+                    tagMe(data.id, cb);
+                    //console.log("fb share complete");
+                }
+            });
+        }
+
+        function tagMe(videoId, cb)
+        {
+            //logger.info("tagging me");
+            //logger.info(params.userId);
+            //logger.info(params.friendId);
+
+            _fb.api("/" + videoId + "/tags", "post", {
+                tag_uid: userObj.fbUid
+            }, function(err, data)
+            {
+                if(err)
+                {
+                    cb.call(null, 'fail on tagging');
+                }
+                else
+                {
+                    cb.call(null, null, {videoId: videoId});
+                }
+
+            });
         }
 
 
@@ -117,8 +241,9 @@ server.on('connection', function(socket)
     });
 });
 
-function createUser()
+function createUser(fbid)
 {
+    /*
     var serial = _serial,
         id = "u" + serial;
     _userDic[id] =
@@ -127,6 +252,7 @@ function createUser()
     };
 
     _serial ++;
+    */
 
     return _userDic[id];
 }

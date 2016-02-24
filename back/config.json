@@ -1,6 +1,5 @@
 {
-  "layer0Path": "./source/layer_0/",
-  "layer1Path": "./source/layer_1/",
-  "videoOutPath": "/var/www/html/guerlain2016_videos/",
+  "domain": "local.savorks.com",
+  "exposePath": "/projects/MarieClaire/guerlain_2016/back/",
   "isServer": false
 }
