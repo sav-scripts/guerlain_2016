@@ -2,6 +2,10 @@
 .idea
 design
 /test
+/back/source
+tmp
+ffmpeg.exe
+bgm.mp3
 
 # nodejs modules
 node_modules

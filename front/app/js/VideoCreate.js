@@ -6,22 +6,149 @@
     {
         init: function()
         {
-            VideoCreateForm.init();
 
-            setupTrigger(1);
-            setupTrigger(2);
-            setupTrigger(3);
 
-            function setupTrigger(index)
+            FBHelper.init(Main.settings.fb_appid, function()
             {
-                $doms['trigger-' + index] = $(".trigger-"+index).on("click", function()
+                VideoCreateForm.init();
+
+                setupTrigger(1);
+                setupTrigger(2);
+                setupTrigger(3);
+
+                function setupTrigger(index)
                 {
-                    VideoCreateForm.reset(index).show();
+                    $doms['trigger-' + index] = $(".trigger-"+index).on("click", function()
+                    {
+                        doLogin(function()
+                       {
+                           VideoCreateForm.reset(index).show();
+                       });
+                    });
+                }
+            });
+
+        }
+    };
+
+    function doLogin(cb)
+    {
+        Loading.progress("登入 Facebook 中...請稍候").show();
+
+        if(Main.settings.fbUid)
+        {
+            complete();
+        }
+        else
+        {
+            if(Main.settings.isiOsChrom)
+            {
+                FB.getLoginStatus(function(response)
+                {
+                    if (response.status === 'connected')
+                    {
+                        checkPermissions(response.authResponse, true);
+                    }
+                    else
+                    {
+                        doRedirectLogin();
+                    }
+                });
+            }
+            else
+            {
+                FB.login(function(response)
+                {
+                    if(response.error)
+                    {
+                        alert("登入 Facebook 失敗");
+                    }
+                    else if(response.authResponse)
+                    {
+                        checkPermissions(response.authResponse, false);
+                    }
+                    else
+                    {
+                        alert("您必須登入 Facebook 才能參加本活動");
+                        Loading.hide();
+                    }
+
+                },
+                {
+                    scope: Main.settings.fbPermissions,
+                    return_scopes: true,
+                    auth_type: "rerequest"
                 });
             }
 
         }
-    };
+
+        function checkPermissions(authResponse, redirectToLogin)
+        {
+            FB.api('/me/permissions', function(response)
+            {
+                if (response && response.data && response.data.length)
+                {
+
+                    var i, obj, permObj = {};
+                    for(i=0;i<response.data.length;i++)
+                    {
+                        obj = response.data[i];
+                        permObj[obj.permission] = obj.status;
+                    }
+
+                    //console.log(JSON.stringify(response.data));
+
+                    if (permObj.user_photos != 'granted')
+                    {
+                        fail("您必須給予讀取相片的權限才能參加活動");
+                    }
+                    else if (permObj.publish_actions != 'granted')
+                    {
+                        fail("您必須給予發佈權限才能參加活動");
+                    }
+                    else
+                    {
+                        complete(authResponse);
+                    }
+                }
+                else
+                {
+                    alert("fail when checking permissions");
+                    Loading.hide();
+                }
+            });
+
+            function fail(message)
+            {
+                alert(message);
+                Loading.hide();
+                if(redirectToLogin) doRedirectLogin();
+            }
+        }
+
+        function doRedirectLogin()
+        {
+            var url = "https://www.facebook.com/dialog/oauth?"+
+                "client_id="+Main.settings.fb_appid+
+                "&scope="+Main.settings.fbPermissions.join(",")+
+                "&redirect_uri=" + encodeURI(window.location.href);
+            window.open(url, "_self");
+        }
+
+
+        function complete(authResponse)
+        {
+            if(authResponse)
+            {
+                Main.settings.fbToken = authResponse.accessToken;
+                Main.settings.fbUid = authResponse.userID;
+            }
+
+            Loading.hide();
+            if(cb) cb.apply();
+        }
+    }
 
 }());
 
@@ -129,7 +256,7 @@
             setupItem(2);
             setupItem(3);
 
-            _p.reset(1).show();
+            //_p.reset(1).show();
 
             return _p;
         },

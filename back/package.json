@@ -1,0 +1,13 @@
+{
+  "name":"guerlain_2016_video_service",
+  "description": "video service",
+  "version": "1.0.0",
+  "devDependencies":
+  {
+    "del": "~2.0.2",
+    "engine.io": "~1.5.4",
+    "mkdirp": "~0.5.1",
+    "utf8": "~2.1",
+    "facebook-node-sdk": "~0.2.0"
+  }
+}

@@ -12,7 +12,7 @@
         settings:
         {
             fb_appid: "1120712347979943",
-            fbPermissions: []
+            fbPermissions: ['user_photos', 'publish_actions']
         },
         init: function()
         {
@@ -25,16 +25,19 @@
                 }
             }
 
+            _p.settings.isiOsChrom = navigator.userAgent.match('CriOS');
+            //_p.settings.isiOsChrom = true;
+
+            window.Loading = SquareLoading;
+
             $doms.container = $("#scene-container");
             $doms.body = $("body");
-
-            console.log($doms.body);
 
             VideoCreate.init();
         },
         lockScroll: function()
         {
-            var top = $(document).scrollTop();
+            //var top = $(document).scrollTop();
 
             $doms.body.toggleClass("lock-mode", true);
             //console.log($(document).scrollTop());
