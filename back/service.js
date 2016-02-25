@@ -83,6 +83,8 @@ server.on('connection', function(socket)
             {
                 _fb_uid = params.fbUserId;
 
+                if(!params.shareText) params.shareText = '';
+
                 var id = "u_" + params.fbUserId;
                 userObj = _userDic[id] =
                     {
@@ -133,7 +135,7 @@ server.on('connection', function(socket)
 
                                             sendEvent("create-progress", {status:"sharing"});
 
-                                            uploadVideo(userObj.id, function(err, data)
+                                            uploadVideo(userObj.id, params.shareText, function(err, data)
                                             {
                                                 if(err)
                                                 {
@@ -171,13 +173,12 @@ server.on('connection', function(socket)
             }
         }
 
-        function uploadVideo(id, cb)
+        function uploadVideo(id, shareText, cb)
         {
             //var filePath = "@" + __dirname  + "\\tmp\\"+_folderName+"\\out.mp4";
             //var filePath = videoUrl;
             var filePath = "@" + __dirname + "/tmp/"+id+"/out.mp4";
 
-            var shareText = "some share description";
             shareText = utf8.encode(shareText);
 
 

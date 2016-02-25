@@ -3,6 +3,12 @@
 @background-color: #faefd8;
 @field-font-color: #666666;
 
+.default-font(@font-size: 14px, @font-color: #000){
+    font-family: '微軟正黑體', "Heiti TC", serif;
+    font-size: @font-size;
+    color: @font-color;
+}
+
 html {
     padding: 0;
     margin: 0;
@@ -50,6 +56,20 @@ body{
     left: 50%;
     margin-left: -@w * .5;
     .image-bg('demo-background.jpg');
+}
+
+.main-cover{
+
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height:100%;
+    background: rgba(0,0,0,.8);
+
+    display: none;
+
+    z-index: 50;
 }
 
 /** mixins **/
@@ -142,20 +162,76 @@ body{
     width: 100%;
     height:100%;
 
+    overflow-x: hidden;
+    overflow-y: auto;
+
     z-index: 100;
 
-    .cover{
-        position: absolute;
-        width: 100%;
-        height:100%;
-        background: rgba(0,0,0,.8);
-    }
     .form-container{
 
-        .centralized-div(50%, 50%, 871px, 798px);
+        @w: 871px;
+        @h: 878px;
+        @gap: 50px;
+        @minHeight: (@h + @gap * 2);
+
+        .centralized-div(50%, 50%, @w, @h);
+
+
+
+        @media (max-height: @minHeight) {
+            position: relative;
+            top:0;
+            margin-top: @gap;
+            margin-bottom: @gap;
+        }
 
 //        .image-bg("demo-video-form.jpg");
-        .image-bg("video-form-base.jpg");
+//        .image-bg("video-form-base.jpg");
+        background-color:#e8e8e8;
+
+        .title{
+            .abs-div(102px, 17px,665px,138px,0,0, "video-form-title.png");
+        }
+
+
+        .check-text{
+            position: absolute;
+            right:278px;
+            bottom:36px;
+            width:263px;
+            height:36px;
+            .image-bg("check-text.png");
+        }
+
+        .deco{
+
+            position: absolute;
+            right:22px;
+            top:220px;
+            width:247px;
+            height:489px;
+            .image-bg("check-form-deco.jpg");
+        }
+
+        .question-text{
+            .abs-div(236px, 686px,256px,16px,0,0, "video-form-question.png");
+        }
+
+        .input-field{
+            position: absolute;
+            left:233px;
+            top:711px;
+            width:320px;
+            height:60px;
+
+            padding: 5px;
+            border: none;
+
+            overflow-y : auto; /* IE */
+            resize : none; /* Firefox, Chrome */
+
+            .default-font(14px, #808080);
+        }
 
         .item-1, .item-2, .item-3{
             position: absolute;

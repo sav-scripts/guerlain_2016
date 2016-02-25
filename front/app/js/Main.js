@@ -17,7 +17,7 @@
             socketUrl: "ws://219.85.64.49:3005",
 
             fb_appid: "1120712347979943",
-            fbPermissions: ['user_photos', 'publish_actions']
+            fbPermissions: ['publish_actions']
         },
         init: function()
         {
@@ -39,6 +39,7 @@
             $doms.body = $("body");
 
             VideoCreate.init();
+            MainCover.init();
         },
         lockScroll: function()
         {
@@ -50,6 +51,36 @@
         unlockScroll: function()
         {
             $doms.body.toggleClass("lock-mode", false);
+        }
+    };
+
+}());
+
+(function(){
+
+    var $dom;
+
+    window.MainCover =
+    {
+        init: function()
+        {
+            $dom = $(".main-cover");
+        },
+        show: function()
+        {
+            TweenMax.killTweensOf($dom);
+            $dom.css("display", "block");
+            TweenMax.set($dom, {alpha:0});
+            TweenMax.to($dom,.5, {alpha:1});
+        },
+        hide: function()
+        {
+            TweenMax.killTweensOf($dom);
+            TweenMax.to($dom,.5, {alpha:0, onComplete:function()
+            {
+                $dom.css("display", "none");
+            }});
+
         }
     };
 

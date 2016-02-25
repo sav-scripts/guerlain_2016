@@ -97,15 +97,9 @@
                         permObj[obj.permission] = obj.status;
                     }
 
-                    //console.log(JSON.stringify(response.data));
-
-                    if (permObj.user_photos != 'granted')
+                    if (permObj.publish_actions != 'granted')
                     {
-                        fail("您必須給予讀取相片的權限才能參加活動");
-                    }
-                    else if (permObj.publish_actions != 'granted')
-                    {
-                        fail("您必須給予發佈權限才能參加活動");
+                        fail("您必須給予發佈權限才能製作分享影片");
                     }
                     else
                     {
@@ -250,6 +244,7 @@
 
     var $doms = {},
         _currentIndex = 0,
+        _defaultText = '請輸入您的期待',
         _displayTL;
 
     var _p = window.VideoCreateForm =
@@ -257,7 +252,6 @@
         init: function()
         {
             $doms.container = $(".video-create-form").css("visibility", "visible").css("display", "none");
-            $doms.cover = $doms.container.find(".cover");
             $doms.formContainer = $doms.container.find(".form-container");
 
             $doms.btnClose = $doms.container.find(".btn-close").on("click", function()
@@ -298,6 +292,9 @@
             setupItem(2);
             setupItem(3);
 
+            $doms.textArea = $doms.container.find(".input-field");
+            setupTextarea();
+
             //_p.reset(1).show();
 
             return _p;
@@ -310,10 +307,10 @@
 
             if(_displayTL) _displayTL.kill();
 
+            MainCover.show();
+
             var tl = _displayTL = new TimelineMax;
-            tl.set($doms.cover, {autoAlpha:0});
             tl.set($doms.formContainer, {autoAlpha:0});
-            tl.to($doms.cover,.5, {autoAlpha:1});
             tl.to($doms.formContainer,.5, {autoAlpha:1}, "-=.2");
 
             return _p;
@@ -322,9 +319,11 @@
         {
             if(_displayTL) _displayTL.kill();
 
+
+
             var tl = _displayTL = new TimelineMax;
             tl.to($doms.formContainer,.5, {autoAlpha:0});
-            tl.to($doms.cover,.5, {autoAlpha:0}, "-=.2");
+            tl.add(MainCover.hide,.3);
             tl.add(function()
             {
                 $doms.container.css("display", "none");
@@ -342,6 +341,8 @@
             $doms.checkPrivacy.prop("checked", false);
             $doms.checkFbShare.prop("checked", false);
 
+            $doms.textArea[0].value = _defaultText;
+
             _readyStatus =
             {
                 all: false,
@@ -356,6 +357,25 @@
             return _p;
         }
     };
+
+    function setupTextarea()
+    {
+        $doms.textArea.focus(function()
+        {
+            if($doms.textArea[0].value == _defaultText)
+            {
+                $doms.textArea[0].value = "";
+            }
+        });
+
+        $doms.textArea.blur(function()
+        {
+            if(PatternSamples.onlySpace.test($doms.textArea[0].value))
+            {
+                $doms.textArea[0].value = _defaultText;
+            }
+        });
+    }
 
     function resetImageItems()
     {
@@ -448,6 +468,8 @@
     {
         if ($item.input.files && $item.input.files[0])
         {
+
+            //console.log($item.input.files[0].size);
             var reader = new FileReader();
 
             reader.onload = function (event)
@@ -535,8 +557,8 @@
         _readyStatus.privacy = $doms.checkPrivacy.prop("checked");
         _readyStatus.fb = $doms.checkFbShare.prop("checked");
 
-        //_readyStatus.all = _readyStatus.image && _readyStatus.text && _readyStatus.privacy && _readyStatus.fb;
-        _readyStatus.all = _readyStatus.image;
+        _readyStatus.all = _readyStatus.image && _readyStatus.text && _readyStatus.privacy && _readyStatus.fb;
+        //_readyStatus.all = _readyStatus.image;
 
         if(wasAllReady != _readyStatus.all)
         {
@@ -554,7 +576,10 @@
             array[i] = $item.canvas.toDataURL("image/jpeg", .95).replace(/^data:image\/jpeg;base64,/, "");
         }
 
-        ServerProxy.start(_currentIndex, array, function(success)
+        var shareText = $doms.textArea[0].value;
+        if(shareText == _defaultText) shareText = '';
+
+        ServerProxy.start(_currentIndex, array, shareText, function(success)
         {
             if(success)
             {

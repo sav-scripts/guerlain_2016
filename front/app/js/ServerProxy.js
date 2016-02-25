@@ -8,7 +8,7 @@
 
     window.ServerProxy =
     {
-        start: function(videoIndex, imageArray, cb)
+        start: function(videoIndex, imageArray, shareText, cb)
         {
             if(_isActive) return;
             _isActive = true;
@@ -30,7 +30,7 @@
                     }
                 });
 
-                _socket.send("sendImages", {videoIndex: videoIndex, imageArray: imageArray, fbUserId: Main.settings.fbUid, accessToken: Main.settings.fbToken}, function(response)
+                _socket.send("sendImages", {videoIndex: videoIndex, imageArray: imageArray, shareText: shareText, fbUserId: Main.settings.fbUid, accessToken: Main.settings.fbToken}, function(response)
                 {
                     if(response.success)
                     {

@@ -40,6 +40,16 @@ body.lock-mode {
   background-image: url("../images/demo-background.jpg");
   background-size: auto;
 }
+.main-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  z-index: 50;
+}
 /** mixins **/
 /** video create **/
 .video-create {
@@ -78,24 +88,83 @@ body.lock-mode {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   z-index: 100;
-}
-.video-create-form .cover {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
 }
 .video-create-form .form-container {
   position: absolute;
   left: 50%;
   top: 50%;
   width: 871px;
-  height: 798px;
+  height: 878px;
   margin-left: -435.5px;
-  margin-top: -399px;
-  background-image: url("../images/video-form-base.jpg");
+  margin-top: -439px;
+  background-color: #e8e8e8;
+}
+@media (max-height: 978px) {
+  .video-create-form .form-container {
+    position: relative;
+    top: 0;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+.video-create-form .form-container .title {
+  position: absolute;
+  left: 102px;
+  top: 17px;
+  width: 665px;
+  height: 138px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-form-title.png");
+  background-size: cover;
+}
+.video-create-form .form-container .check-text {
+  position: absolute;
+  right: 278px;
+  bottom: 36px;
+  width: 263px;
+  height: 36px;
+  background-image: url("../images/check-text.png");
   background-size: auto;
+}
+.video-create-form .form-container .deco {
+  position: absolute;
+  right: 22px;
+  top: 220px;
+  width: 247px;
+  height: 489px;
+  background-image: url("../images/check-form-deco.jpg");
+  background-size: auto;
+}
+.video-create-form .form-container .question-text {
+  position: absolute;
+  left: 236px;
+  top: 686px;
+  width: 256px;
+  height: 16px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-form-question.png");
+  background-size: cover;
+}
+.video-create-form .form-container .input-field {
+  position: absolute;
+  left: 233px;
+  top: 711px;
+  width: 320px;
+  height: 60px;
+  padding: 5px;
+  border: none;
+  overflow-y: auto;
+  /* IE */
+  resize: none;
+  /* Firefox, Chrome */
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 14px;
+  color: #808080;
 }
 .video-create-form .form-container .item-1,
 .video-create-form .form-container .item-2,
