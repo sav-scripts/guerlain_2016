@@ -1,0 +1,12 @@
+/** send **/
+{
+    "user_name": "John Tester",  // 真實姓名
+    "phone": "0987654321",  // 手機號碼
+    "email": "xxx@xxx.xx",  // 電子信箱
+    "retail": "xx百貨xx櫃點"  //
+}
+
+/** recive **/
+{
+    "error": "some error message" // 錯誤訊息, 沒的話傳空值
+}

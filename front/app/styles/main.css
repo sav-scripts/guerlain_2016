@@ -31,15 +31,6 @@ body.lock-mode {
   height: 100%;
   visibility: hidden;
 }
-.demo-background {
-  position: absolute;
-  width: 1920px;
-  height: 4400px;
-  left: 50%;
-  margin-left: -960px;
-  background-image: url("../images/demo-background.jpg");
-  background-size: auto;
-}
 .main-cover {
   position: fixed;
   top: 0;
@@ -50,7 +41,484 @@ body.lock-mode {
   display: none;
   z-index: 50;
 }
+/** main contents **/
+.main-contents {
+  position: absolute;
+  width: 1920px;
+  height: 4350px;
+  left: 50%;
+  margin-left: -960px;
+  /** groups **/
+}
+.main-contents .block-group {
+  position: relative;
+  width: 100%;
+  float: left;
+}
+.main-contents .top-group {
+  background: #fcfcfc;
+  height: 136px;
+}
+.main-contents .top-group .logo {
+  position: absolute;
+  left: 682px;
+  top: 23px;
+  width: 554px;
+  height: 86px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/top-group-logo.png");
+  background-size: cover;
+}
+.main-contents .video-group {
+  background: #fcfcfc;
+  height: 610px;
+}
+.main-contents .video-group .video-area {
+  position: absolute;
+  top: 0;
+  left: 50%;
+}
+.main-contents .video-group .video-area .video-player {
+  position: absolute;
+  width: 1186px;
+  height: 546px;
+  background: #ccc;
+  top: 0;
+}
+.main-contents .video-group .video-area .video1 {
+  left: -1799px;
+}
+.main-contents .video-group .video-area .video2 {
+  left: -593px;
+}
+.main-contents .video-group .video-area .video3 {
+  left: 613px;
+}
+.main-contents .video-group .video-area .arrow-left {
+  position: absolute;
+  left: -670px;
+  top: 204px;
+  width: 44px;
+  height: 112px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-group-arrow-left.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .video-group .video-area .arrow-left:active {
+  margin-left: -10px;
+}
+.main-contents .video-group .video-area .arrow-right {
+  position: absolute;
+  left: 620px;
+  top: 204px;
+  width: 44px;
+  height: 112px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-group-arrow-right.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .video-group .video-area .arrow-right:active {
+  margin-left: 10px;
+}
+.main-contents .video-group .bottom-buttons {
+  position: absolute;
+  bottom: 53px;
+  left: 1094px;
+}
+.main-contents .video-group .bottom-buttons .btn-offical-site {
+  position: absolute;
+  left: 0px;
+  width: 150px;
+  height: 26px;
+  cursor: pointer;
+}
+.main-contents .video-group .bottom-buttons .btn-offical-site .text {
+  position: absolute;
+  width: 100px;
+  height: 26px;
+  left: 0;
+  top: 0;
+  background-image: url("../images/video-group-buttons.png");
+  background-size: auto;
+  background-position: 0px;
+}
+.main-contents .video-group .bottom-buttons .btn-offical-site .icon {
+  position: absolute;
+  width: 40px;
+  height: 26px;
+  left: 100px;
+  top: 0;
+  background-image: url("../images/video-group-buttons.png");
+  background-size: auto;
+  background-position: -100px;
+}
+.main-contents .video-group .bottom-buttons .btn-fb {
+  position: absolute;
+  left: 160px;
+  width: 190px;
+  height: 26px;
+  cursor: pointer;
+}
+.main-contents .video-group .bottom-buttons .btn-fb .text {
+  position: absolute;
+  width: 124px;
+  height: 26px;
+  left: 0;
+  top: 0;
+  background-image: url("../images/video-group-buttons.png");
+  background-size: auto;
+  background-position: -160px;
+}
+.main-contents .video-group .bottom-buttons .btn-fb .icon {
+  position: absolute;
+  width: 30px;
+  height: 26px;
+  left: 124px;
+  top: 0;
+  background-image: url("../images/video-group-buttons.png");
+  background-size: auto;
+  background-position: -284px;
+}
+.main-contents .video-group .bottom-buttons .btn-ig {
+  position: absolute;
+  left: 334px;
+  width: 120px;
+  height: 26px;
+  cursor: pointer;
+}
+.main-contents .video-group .bottom-buttons .btn-ig .text {
+  position: absolute;
+  width: 90px;
+  height: 26px;
+  left: 0;
+  top: 0;
+  background-image: url("../images/video-group-buttons.png");
+  background-size: auto;
+  background-position: -334px;
+}
+.main-contents .video-group .bottom-buttons .btn-ig .icon {
+  position: absolute;
+  width: 27px;
+  height: 26px;
+  left: 90px;
+  top: 0;
+  background-image: url("../images/video-group-buttons.png");
+  background-size: auto;
+  background-position: -424px;
+}
+.main-contents .video-group .bottom-buttons .div-line-1 {
+  position: absolute;
+  width: 1px;
+  height: 22px;
+  top: 2px;
+  left: 149px;
+  background: #333333;
+}
+.main-contents .video-group .bottom-buttons .div-line-2 {
+  position: absolute;
+  width: 1px;
+  height: 22px;
+  top: 2px;
+  left: 323px;
+  background: #333333;
+}
+.main-contents .product-group {
+  background: #fcfcfc;
+  height: 1068px;
+}
+.main-contents .product-group .content {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  width: 1920px;
+  height: 1018px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/product-ground-content.jpg");
+  background-size: cover;
+}
+.main-contents .video-create-group {
+  background: #fceef3;
+  height: 994px;
+}
+.main-contents .video-create-group .top {
+  position: absolute;
+  left: 360px;
+  top: 14px;
+  width: 1316px;
+  height: 319px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-top.jpg");
+  background-size: cover;
+}
+.main-contents .video-create-group .kv-area {
+  position: absolute;
+  top: 351px;
+  left: 361px;
+}
+.main-contents .video-create-group .kv-area .kv-1 {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 398px;
+  height: 526px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-kv.jpg");
+  background-size: cover;
+  background-position: 0px;
+}
+.main-contents .video-create-group .kv-area .btn-1 {
+  position: absolute;
+  left: 80px;
+  top: 546px;
+  width: 235px;
+  height: 50px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-btn-go.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .video-create-group .kv-area .btn-1:active {
+  margin-top: 1px;
+}
+.main-contents .video-create-group .kv-area .kv-2 {
+  position: absolute;
+  left: 398px;
+  top: 0;
+  width: 398px;
+  height: 526px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-kv.jpg");
+  background-size: cover;
+  background-position: -398px;
+}
+.main-contents .video-create-group .kv-area .btn-2 {
+  position: absolute;
+  left: 478px;
+  top: 546px;
+  width: 235px;
+  height: 50px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-btn-go.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .video-create-group .kv-area .btn-2:active {
+  margin-top: 1px;
+}
+.main-contents .video-create-group .kv-area .kv-3 {
+  position: absolute;
+  left: 796px;
+  top: 0;
+  width: 398px;
+  height: 526px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-kv.jpg");
+  background-size: cover;
+  background-position: -796px;
+}
+.main-contents .video-create-group .kv-area .btn-3 {
+  position: absolute;
+  left: 876px;
+  top: 546px;
+  width: 235px;
+  height: 50px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-btn-go.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .video-create-group .kv-area .btn-3:active {
+  margin-top: 1px;
+}
+.main-contents .blogger-group {
+  background: #fcfcfc;
+  height: 864px;
+}
+.main-contents .blogger-group .top {
+  position: absolute;
+  left: 648px;
+  top: 30px;
+  width: 618px;
+  height: 175px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-group-top.png");
+  background-size: cover;
+}
+.main-contents .blogger-group .left {
+  position: absolute;
+  left: 246px;
+  top: 133px;
+  width: 510px;
+  height: 719px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-group-left.jpg");
+  background-size: cover;
+}
+.main-contents .blogger-group .blogger-1 {
+  position: absolute;
+  left: 710px;
+  top: 230px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .blogger-group .blogger-2 {
+  position: absolute;
+  left: 960px;
+  top: 230px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .blogger-group .blogger-3 {
+  position: absolute;
+  left: 1210px;
+  top: 230px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .blogger-group .blogger-4 {
+  position: absolute;
+  left: 590px;
+  top: 540px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .blogger-group .blogger-5 {
+  position: absolute;
+  left: 840px;
+  top: 540px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .blogger-group .blogger-6 {
+  position: absolute;
+  left: 1090px;
+  top: 540px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .blogger-group .blogger-7 {
+  position: absolute;
+  left: 1340px;
+  top: 540px;
+  width: 230px;
+  height: 290px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/blogger-1.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .prize-group {
+  background-image: url("../images/prize-group-bg.jpg");
+  background-size: auto;
+  height: 678px;
+}
+.main-contents .prize-group .input-name,
+.main-contents .prize-group .input-email,
+.main-contents .prize-group .input-phone {
+  position: absolute;
+  width: 328px;
+  height: 29px;
+  border: none;
+  padding: 5px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 14px;
+  color: #666;
+}
+.main-contents .prize-group .input-name {
+  left: 534px;
+  top: 184px;
+}
+.main-contents .prize-group .input-phone {
+  left: 534px;
+  top: 234px;
+}
+.main-contents .prize-group .input-email {
+  left: 534px;
+  top: 284px;
+}
+.main-contents .prize-group .check-privacy {
+  position: absolute;
+  left: 390px;
+  top: 336px;
+}
+.main-contents .prize-group .btn-retail {
+  position: absolute;
+  left: 394px;
+  top: 431px;
+  width: 221px;
+  height: 41px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/prize-group-btn-retails.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .prize-group .btn-retail:active {
+  margin-top: 1px;
+}
+.main-contents .prize-group .btn-send {
+  position: absolute;
+  left: 394px;
+  top: 488px;
+  width: 340px;
+  height: 64px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/prize-group-btn-send.png");
+  background-size: cover;
+  cursor: pointer;
+}
+.main-contents .prize-group .btn-send:active {
+  margin-top: 1px;
+}
 /** mixins **/
+/** top-logo **/
 /** video create **/
 .video-create {
   position: absolute;

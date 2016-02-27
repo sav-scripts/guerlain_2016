@@ -44,20 +44,6 @@ body{
     visibility: hidden;
 }
 
-.demo-background{
-
-    @w: 1920px;
-    @h: 4400px;
-
-    position: absolute;
-    width: @w;
-    height: @h;
-
-    left: 50%;
-    margin-left: -@w * .5;
-    .image-bg('demo-background.jpg');
-}
-
 .main-cover{
 
     position: fixed;
@@ -71,6 +57,295 @@ body{
 
     z-index: 50;
 }
+
+/** main contents **/
+
+.main-contents{
+
+    @w: 1920px;
+    @h: 4350px;
+
+    position: absolute;
+    width: @w;
+    height: @h;
+
+    left: 50%;
+    margin-left: -@w * .5;
+
+//    .image-bg('layout-pc.png');
+
+
+
+    @LH1: 136px;
+    @LH2: 610px;
+    @LH3: 1068px;
+    @LH4: 994px;
+    @LH5: 864px;
+    @LH6: 678px;
+
+
+    /** groups **/
+    .block-group{
+        position: relative;
+        width: 100%;
+        float:left;
+    }
+
+    .top-group{
+        background: #fcfcfc;
+        height: @LH1;
+
+        .logo{
+            .abs-div(682px, 23px, 554px, 86px, 0, 0, "top-group-logo.png");
+        }
+    }
+
+    .video-group{
+        background: #fcfcfc;
+        height: @LH2;
+
+        .video-area{
+
+            @vw: 1186px;
+            @vh: 546px;
+            @wGap: 20px;
+
+            @totalWidth: @vw *3 + @wGap * 2;
+
+            position: absolute;
+            top:0;
+            left:50%;
+
+            .video-player{
+                position: absolute;
+                width: @vw;
+                height: @vh;
+                background: #ccc;
+                top:0;
+            }
+
+            .video1{
+                left: -@totalWidth * .5;
+
+            }
+            .video2{
+                left: -@totalWidth * .5 + (@vw + @wGap) * 1;
+            }
+            .video3{
+                left: -@totalWidth * .5 + (@vw + @wGap) * 2;
+            }
+
+            .arrow-left{
+                .abs-div(-670px, 204px, 44px, 112px, 0, 0, "video-group-arrow-left.png");
+                cursor: pointer;
+                &:active{
+                    margin-left: -10px;
+                }
+            }
+            .arrow-right{
+                .abs-div(620px, 204px, 44px, 112px, 0, 0, "video-group-arrow-right.png");
+                cursor: pointer;
+                &:active{
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        .bottom-buttons{
+            position: absolute;
+            bottom:53px;
+            left:1094px;
+
+            .btn-offical-site{
+                .make-button(0px, 150px, 26px, 100px, 40px, 0px, -100px);
+            }
+            .btn-fb{
+                .make-button(160px, 190px, 26px, 124px, 30px, -160px, -284px);
+            }
+            .btn-ig{
+                .make-button(334px, 120px, 26px, 90px, 27px, -334px, -424px);
+            }
+
+            .div-line-1{
+                position: absolute;
+                width: 1px;
+                height: 22px;
+                top:2px;
+                left: 149px;
+                background: #333333;
+            }
+            .div-line-2{
+                position: absolute;
+                width: 1px;
+                height: 22px;
+                top:2px;
+                left: 323px;
+                background: #333333;
+            }
+
+            .make-button(@l; @w; @h; @textWidth; @iconWidth; @textOffset; @iconOffset;)
+            {
+                position: absolute;
+                left: @l;
+                width: @w;
+                height: @h;
+
+                cursor: pointer;
+
+                .text{
+                    position: absolute;
+                    width: @textWidth;
+                    height:26px;
+                    left:0;
+                    top:0;
+                    .image-bg("video-group-buttons.png");
+                    background-position: @textOffset;
+                }
+                .icon{
+                    position: absolute;
+                    width: @iconWidth;
+                    height:26px;
+                    left:@textWidth;
+                    top:0;
+                    .image-bg("video-group-buttons.png");
+                    background-position: @iconOffset;
+                }
+            }
+        }
+
+    }
+
+    .product-group{
+        background: #fcfcfc;
+        height: @LH3;
+
+        .content{
+            .abs-div(0px, 30px, 1920px, 1018px, 0, 0, "product-ground-content.jpg");
+        }
+    }
+
+    .video-create-group{
+        background: #fceef3;
+        height: @LH4;
+
+        .top{
+            .abs-div(360px,14px,1316px, 319px, 0, 0, "video-create-top.jpg");
+        }
+        .kv-area{
+            @kvw:398px;
+            @kvh:526px;
+
+            position: absolute;
+            top:351px;
+            left:361px;
+
+            .my-mixin(1);
+            .my-mixin(2);
+            .my-mixin(3);
+
+            .my-mixin(@index){
+                @offset: @kvw * (@index - 1);
+                .kv-@{index}{
+                    .abs-div(@offset, 0, @kvw, @kvh, 0, 0, "video-create-kv.jpg");
+                    background-position: -@offset;
+                }
+                .btn-@{index}{
+                    .abs-div(80px + @offset, 546px, 235px, 50px, 0, 0, "video-create-btn-go.png");
+                    cursor: pointer;
+                    &:active{
+                        margin-top: 1px;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .blogger-group{
+        background: #fcfcfc;
+        height: @LH5;
+
+        .top{
+            .abs-div(648px, 30px, 618px, 175px, 0, 0, "blogger-group-top.png");
+        }
+        .left{
+            .abs-div(246px, 133px, 510px, 719px, 0, 0, "blogger-group-left.jpg");
+        }
+
+        @gap: 250px;
+
+        .my-mixin(1, 0, 710px, 230px);
+        .my-mixin(2, 1, 710px, 230px);
+        .my-mixin(3, 2, 710px, 230px);
+        .my-mixin(4, 0, 590px, 540px);
+        .my-mixin(5, 1, 590px, 540px);
+        .my-mixin(6, 2, 590px, 540px);
+        .my-mixin(7, 3, 590px, 540px);
+
+        .my-mixin(@index; @numGaps; @startX; @startY; @w: 230px; @h: 290px; @fileIndex: 1;){
+            .blogger-@{index}{
+                .abs-div(@startX + @numGaps * @gap, @startY, @w, @h, 0, 0, "blogger-@{fileIndex}.png");
+                cursor: pointer;
+            }
+        }
+    }
+
+    .prize-group{
+        .image-bg("prize-group-bg.jpg");
+        height: @LH6;
+
+        .input-name, .input-email, .input-phone{
+            position: absolute;
+            width: 328px;
+            height: 29px;
+            border: none;
+
+            padding: 5px;
+            .default-font(14px, #666);
+        }
+
+        .input-name{
+            left: 534px;
+            top:184px;
+        }
+
+        .input-phone{
+            left: 534px;
+            top:234px;
+        }
+
+        .input-email{
+            left: 534px;
+            top:284px;
+        }
+
+        .check-privacy{
+            position: absolute;
+            left: 390px;
+            top:336px;
+        }
+
+        .btn-retail{
+            .abs-div(394px, 431px, 221px, 41px, 0, 0, "prize-group-btn-retails.png");
+            cursor: pointer;
+            &:active{
+                margin-top: 1px;
+            }
+        }
+
+        .btn-send{
+            .abs-div(394px, 488px, 340px, 64px, 0, 0, "prize-group-btn-send.png");
+            cursor: pointer;
+            &:active {
+                margin-top: 1px;
+            }
+        }
+
+    }
+
+
+}
+
 
 /** mixins **/
 .select-default(){
@@ -111,6 +386,13 @@ body{
     }
 }
 
+
+
+/** top-logo **/
+.top-logo{
+
+}
+
 /** video create **/
 .video-create{
 
@@ -134,10 +416,6 @@ body{
         &:hover{
             opacity: 1;
         }
-
-    }
-
-    .trigger-1{
 
     }
 

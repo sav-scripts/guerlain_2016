@@ -12,13 +12,15 @@
             {
                 VideoCreateForm.init();
 
+                $doms.container = $(".video-create-group");
+
                 setupTrigger(1);
                 setupTrigger(2);
                 setupTrigger(3);
 
                 function setupTrigger(index)
                 {
-                    $doms['trigger-' + index] = $(".trigger-"+index).on("click", function()
+                    $doms['trigger-' + index] = $doms.container.find(".btn-"+index).on("click", function()
                     {
                         doLogin(function()
                        {
