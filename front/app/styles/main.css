@@ -7,7 +7,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
+  overflow-x: auto;
   background: #faefd8;
   padding: 0;
   margin: 0;
@@ -19,11 +19,6 @@ body.lock-mode {
   position: absolute;
   width: 100%;
   height: 100%;
-}
-#scene-container {
-  position: absolute;
-  width: 100%;
-  height: auto;
 }
 #invisible-container {
   position: absolute;
@@ -42,12 +37,20 @@ body.lock-mode {
   z-index: 50;
 }
 /** main contents **/
+#scene-container {
+  position: absolute;
+  width: 100%;
+  height: 4350px;
+  overflow: hidden;
+  min-width: 1370px;
+}
 .main-contents {
   position: absolute;
   width: 1920px;
   height: 4350px;
   left: 50%;
   margin-left: -960px;
+  overflow: hidden;
   /** groups **/
 }
 .main-contents .block-group {
@@ -79,21 +82,20 @@ body.lock-mode {
   top: 0;
   left: 50%;
 }
-.main-contents .video-group .video-area .video-player {
+.main-contents .video-group .video-area .video-container {
   position: absolute;
+  top: 0;
+  left: -593px;
+  white-space: nowrap;
+  font-size: 0;
+}
+.main-contents .video-group .video-area .video-container .video-player {
+  position: relative;
+  display: inline-block;
   width: 1186px;
   height: 546px;
   background: #ccc;
-  top: 0;
-}
-.main-contents .video-group .video-area .video1 {
-  left: -1799px;
-}
-.main-contents .video-group .video-area .video2 {
-  left: -593px;
-}
-.main-contents .video-group .video-area .video3 {
-  left: 613px;
+  margin-right: 20px;
 }
 .main-contents .video-group .video-area .arrow-left {
   position: absolute;
@@ -106,9 +108,13 @@ body.lock-mode {
   background-image: url("../images/video-group-arrow-left.png");
   background-size: cover;
   cursor: pointer;
+  transition: opacity 0.5s ease-out;
 }
 .main-contents .video-group .video-area .arrow-left:active {
   margin-left: -10px;
+}
+.main-contents .video-group .video-area .arrow-left.disactive {
+  opacity: 0;
 }
 .main-contents .video-group .video-area .arrow-right {
   position: absolute;
@@ -121,9 +127,13 @@ body.lock-mode {
   background-image: url("../images/video-group-arrow-right.png");
   background-size: cover;
   cursor: pointer;
+  transition: opacity 0.5s ease-out;
 }
 .main-contents .video-group .video-area .arrow-right:active {
   margin-left: 10px;
+}
+.main-contents .video-group .video-area .arrow-right.disactive {
+  opacity: 0;
 }
 .main-contents .video-group .bottom-buttons {
   position: absolute;
@@ -239,7 +249,7 @@ body.lock-mode {
   height: 1018px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/product-ground-content.jpg");
+  background-image: url("../images/product-group-content.jpg");
   background-size: cover;
 }
 .main-contents .video-create-group {
@@ -274,6 +284,24 @@ body.lock-mode {
   background-size: cover;
   background-position: 0px;
 }
+.main-contents .video-create-group .kv-area .kv-1 .hover-clip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 399px;
+  height: 526px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-kv-hover.jpg");
+  background-size: cover;
+  background-position: 0px;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.main-contents .video-create-group .kv-area .kv-1 .hover-clip:hover {
+  cursor: pointer;
+  opacity: 1;
+}
 .main-contents .video-create-group .kv-area .btn-1 {
   position: absolute;
   left: 80px;
@@ -301,6 +329,24 @@ body.lock-mode {
   background-size: cover;
   background-position: -398px;
 }
+.main-contents .video-create-group .kv-area .kv-2 .hover-clip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 399px;
+  height: 526px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-kv-hover.jpg");
+  background-size: cover;
+  background-position: -398px;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.main-contents .video-create-group .kv-area .kv-2 .hover-clip:hover {
+  cursor: pointer;
+  opacity: 1;
+}
 .main-contents .video-create-group .kv-area .btn-2 {
   position: absolute;
   left: 478px;
@@ -327,6 +373,24 @@ body.lock-mode {
   background-image: url("../images/video-create-kv.jpg");
   background-size: cover;
   background-position: -796px;
+}
+.main-contents .video-create-group .kv-area .kv-3 .hover-clip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 399px;
+  height: 526px;
+  margin-left: 0;
+  margin-top: 0;
+  background-image: url("../images/video-create-kv-hover.jpg");
+  background-size: cover;
+  background-position: -796px;
+  opacity: 0;
+  transition: opacity 0.6s ease-out;
+}
+.main-contents .video-create-group .kv-area .kv-3 .hover-clip:hover {
+  cursor: pointer;
+  opacity: 1;
 }
 .main-contents .video-create-group .kv-area .btn-3 {
   position: absolute;
@@ -369,7 +433,12 @@ body.lock-mode {
   background-image: url("../images/blogger-group-left.jpg");
   background-size: cover;
 }
-.main-contents .blogger-group .blogger-1 {
+.main-contents .blogger-group .blogger-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.main-contents .blogger-group .blogger-container .blogger-1 {
   position: absolute;
   left: 710px;
   top: 230px;
@@ -381,7 +450,7 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
-.main-contents .blogger-group .blogger-2 {
+.main-contents .blogger-group .blogger-container .blogger-2 {
   position: absolute;
   left: 960px;
   top: 230px;
@@ -393,7 +462,7 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
-.main-contents .blogger-group .blogger-3 {
+.main-contents .blogger-group .blogger-container .blogger-3 {
   position: absolute;
   left: 1210px;
   top: 230px;
@@ -405,7 +474,7 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
-.main-contents .blogger-group .blogger-4 {
+.main-contents .blogger-group .blogger-container .blogger-4 {
   position: absolute;
   left: 590px;
   top: 540px;
@@ -417,7 +486,7 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
-.main-contents .blogger-group .blogger-5 {
+.main-contents .blogger-group .blogger-container .blogger-5 {
   position: absolute;
   left: 840px;
   top: 540px;
@@ -429,7 +498,7 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
-.main-contents .blogger-group .blogger-6 {
+.main-contents .blogger-group .blogger-container .blogger-6 {
   position: absolute;
   left: 1090px;
   top: 540px;
@@ -441,7 +510,7 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
-.main-contents .blogger-group .blogger-7 {
+.main-contents .blogger-group .blogger-container .blogger-7 {
   position: absolute;
   left: 1340px;
   top: 540px;
@@ -518,7 +587,6 @@ body.lock-mode {
   margin-top: 1px;
 }
 /** mixins **/
-/** top-logo **/
 /** video create **/
 .video-create {
   position: absolute;
@@ -846,4 +914,470 @@ body.lock-mode {
   margin-top: 0;
   background-image: url("../images/btn-close.png");
   background-size: cover;
+}
+@media (max-width: 480px) {
+  #scene-container {
+    height: 3170px;
+    min-width: inherit;
+  }
+  .main-contents {
+    width: 480px;
+    height: 3170px;
+    left: 50%;
+    margin-left: -240px;
+    overflow: hidden;
+  }
+  .main-contents .top-group {
+    height: 70px;
+  }
+  .main-contents .top-group .logo {
+    position: absolute;
+    left: 108px;
+    top: 19px;
+    width: 263px;
+    height: 41px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/top-group-logo-m.png");
+    background-size: cover;
+  }
+  .main-contents .video-group {
+    height: 400px;
+  }
+  .main-contents .video-group .video-area {
+    position: absolute;
+    top: 43px;
+    left: 50%;
+  }
+  .main-contents .video-group .video-area .video-container {
+    left: -240px;
+  }
+  .main-contents .video-group .video-area .video-container .video-player {
+    width: 480px;
+    height: 278px;
+    background: #ccc;
+    margin-right: 0px;
+  }
+  .main-contents .video-group .video-area .arrow-left {
+    display: none;
+  }
+  .main-contents .video-group .video-area .arrow-right {
+    display: none;
+  }
+  .main-contents .video-group .video-thumb-area {
+    position: absolute;
+    top: 333px;
+    left: 0;
+    width: 500px;
+    height: 67px;
+  }
+  .main-contents .video-group .video-thumb-area .video-thumb {
+    position: relative;
+    float: left;
+    width: 117px;
+    height: 67px;
+    margin-right: 4px;
+    background: #ccc;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .video-group .video-thumb-area .video-thumb.disac3ive {
+    opacity: .5;
+  }
+  .main-contents .video-group .bottom-buttons {
+    position: absolute;
+    bottom: auto;
+    left: 12px;
+    top: 8px;
+  }
+  .main-contents .product-group {
+    background: #ffffff;
+    height: 644px;
+  }
+  .main-contents .product-group .content {
+    position: absolute;
+    left: 0px;
+    top: 27px;
+    width: 480px;
+    height: 166px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/product-group-content-m.jpg");
+    background-size: cover;
+  }
+  .main-contents .product-group .topic-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .main-contents .product-group .topic-container .topic-1 {
+    position: absolute;
+    left: 6px;
+    top: 199px;
+    width: 470px;
+    height: 424px;
+    margin-left: 0px;
+    margin-top: 0;
+    background-image: url("../images/product-group-topic-1-m.jpg");
+    background-size: cover;
+  }
+  .main-contents .product-group .topic-container .topic-2 {
+    position: absolute;
+    left: 20px;
+    top: 208px;
+    width: 437px;
+    height: 315px;
+    margin-left: 480px;
+    margin-top: 0;
+    background-image: url("../images/product-group-topic-2-m.jpg");
+    background-size: cover;
+  }
+  .main-contents .product-group .btn-left {
+    position: absolute;
+    left: 0px;
+    top: 367px;
+    width: 38px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/black-btn-left.png");
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .product-group .btn-left:active {
+    background-repeat: repeat;
+    background-position: 2px;
+  }
+  .main-contents .product-group .btn-left.disactive {
+    opacity: 0;
+  }
+  .main-contents .product-group .btn-right {
+    position: absolute;
+    left: 442px;
+    top: 367px;
+    width: 38px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/black-btn-right.png");
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .product-group .btn-right:active {
+    background-repeat: repeat;
+    background-position: -2px;
+  }
+  .main-contents .product-group .btn-right.disactive {
+    opacity: 0;
+  }
+  .main-contents .video-create-group {
+    background: #fceef3;
+    height: 805px;
+  }
+  .main-contents .video-create-group .top {
+    position: absolute;
+    left: 23px;
+    top: 23px;
+    width: 429px;
+    height: 230px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/video-create-top-m.jpg");
+    background-size: cover;
+  }
+  .main-contents .video-create-group .kv-area {
+    display: none;
+  }
+  .main-contents .video-create-group .kv-area-m {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .main-contents .video-create-group .kv-area-m .kv-1 {
+    position: absolute;
+    left: 57px;
+    top: 267px;
+    width: 342px;
+    height: 514px;
+    margin-left: 0px;
+    margin-top: 0;
+    background-image: url("../images/video-create-kv-1-m.png");
+    background-size: cover;
+  }
+  .main-contents .video-create-group .kv-area-m .kv-2 {
+    position: absolute;
+    left: 58px;
+    top: 267px;
+    width: 341px;
+    height: 514px;
+    margin-left: 480px;
+    margin-top: 0;
+    background-image: url("../images/video-create-kv-2-m.png");
+    background-size: cover;
+  }
+  .main-contents .video-create-group .kv-area-m .kv-3 {
+    position: absolute;
+    left: 57px;
+    top: 265px;
+    width: 342px;
+    height: 516px;
+    margin-left: 960px;
+    margin-top: 0;
+    background-image: url("../images/video-create-kv-3-m.png");
+    background-size: cover;
+  }
+  .main-contents .video-create-group .kv-area-m .kv-1 .btn,
+  .main-contents .video-create-group .kv-area-m .kv-2 .btn,
+  .main-contents .video-create-group .kv-area-m .kv-3 .btn {
+    position: absolute;
+    width: 268px;
+    height: 53px;
+    left: 52px;
+    bottom: 28px;
+    background-image: url("../images/video-create-btn-go-m.png");
+    background-size: auto;
+    cursor: pointer;
+  }
+  .main-contents .video-create-group .kv-area-m .kv-1 .btn:active,
+  .main-contents .video-create-group .kv-area-m .kv-2 .btn:active,
+  .main-contents .video-create-group .kv-area-m .kv-3 .btn:active {
+    margin-bottom: -2px;
+  }
+  .main-contents .video-create-group .btn-left {
+    position: absolute;
+    left: 0px;
+    top: 475px;
+    width: 38px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/black-btn-left.png");
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .video-create-group .btn-left:active {
+    background-repeat: repeat;
+    background-position: -2px;
+  }
+  .main-contents .video-create-group .btn-left.disactive {
+    opacity: 0;
+  }
+  .main-contents .video-create-group .btn-right {
+    position: absolute;
+    left: 442px;
+    top: 475px;
+    width: 38px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/black-btn-right.png");
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .video-create-group .btn-right:active {
+    background-repeat: repeat;
+    background-position: 2px;
+  }
+  .main-contents .video-create-group .btn-right.disactive {
+    opacity: 0;
+  }
+  .main-contents .blogger-group {
+    background: #fcfcfc;
+    height: 663px;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .blogger-group .top {
+    position: absolute;
+    left: 27px;
+    top: 39px;
+    width: 424px;
+    height: 136px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/blogger-group-top-m.png");
+    background-size: cover;
+  }
+  .main-contents .blogger-group .left {
+    display: none;
+  }
+  .main-contents .blogger-group .blogger-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-1 {
+    position: absolute;
+    left: 62px;
+    top: 195px;
+    width: 170px;
+    height: 215px;
+    margin-left: 0px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-2 {
+    position: absolute;
+    left: 248px;
+    top: 195px;
+    width: 170px;
+    height: 215px;
+    margin-left: 0px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-3 {
+    position: absolute;
+    left: 62px;
+    top: 423px;
+    width: 170px;
+    height: 215px;
+    margin-left: 0px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-4 {
+    position: absolute;
+    left: 248px;
+    top: 423px;
+    width: 170px;
+    height: 215px;
+    margin-left: 0px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-5 {
+    position: absolute;
+    left: 62px;
+    top: 195px;
+    width: 170px;
+    height: 215px;
+    margin-left: 480px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-6 {
+    position: absolute;
+    left: 248px;
+    top: 195px;
+    width: 170px;
+    height: 215px;
+    margin-left: 480px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-7 {
+    position: absolute;
+    left: 62px;
+    top: 423px;
+    width: 170px;
+    height: 215px;
+    margin-left: 480px;
+    margin-top: 0;
+    background-image: url("../images/blogger-1.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .btn-left {
+    position: absolute;
+    left: 0px;
+    top: 355px;
+    width: 38px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/black-btn-left.png");
+    background-size: cover;
+    cursor: pointer;
+    transition: opacity 0.5s ease-out;
+  }
+  .main-contents .blogger-group .btn-left:active {
+    background-repeat: repeat;
+    background-position: -2px;
+  }
+  .main-contents .blogger-group .btn-left.disactive {
+    opacity: 0;
+  }
+  .main-contents .blogger-group .btn-right {
+    position: absolute;
+    left: 442px;
+    top: 355px;
+    width: 38px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/black-btn-right.png");
+    background-size: cover;
+    cursor: pointer;
+  }
+  .main-contents .blogger-group .btn-right:active {
+    background-repeat: repeat;
+    background-position: 2px;
+  }
+  .main-contents .blogger-group.disactive {
+    opacity: 0;
+  }
+  .main-contents .prize-group {
+    background-image: url("../images/prize-group-bg-m.jpg");
+    background-size: auto;
+    height: 588px;
+  }
+  .main-contents .prize-group .input-name,
+  .main-contents .prize-group .input-email,
+  .main-contents .prize-group .input-phone {
+    width: 270px;
+    height: 25px;
+  }
+  .main-contents .prize-group .input-name {
+    left: 121px;
+    top: 181px;
+  }
+  .main-contents .prize-group .input-phone {
+    left: 121px;
+    top: 227px;
+  }
+  .main-contents .prize-group .input-email {
+    left: 121px;
+    top: 273px;
+  }
+  .main-contents .prize-group .check-privacy {
+    left: 24px;
+    top: 322px;
+  }
+  .main-contents .prize-group .btn-retail {
+    position: absolute;
+    left: 132px;
+    top: 427px;
+    width: 221px;
+    height: 41px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/prize-group-btn-retails.png");
+    background-size: cover;
+  }
+  .main-contents .prize-group .btn-send {
+    position: absolute;
+    left: 39px;
+    top: 478px;
+    width: 408px;
+    height: 64px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/prize-group-btn-send-m.png");
+    background-size: cover;
+  }
 }

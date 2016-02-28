@@ -1,0 +1,335 @@
+@mobileWidth: 480px;
+@mobileHeight: 3170px;
+
+@media(max-width: @mobileWidth)
+{
+    #scene-container{
+        height: @mobileHeight;
+        min-width: inherit;
+    }
+
+
+    .main-contents{
+
+        @LH1: 70px;
+        @LH2: 400px;
+        @LH3: 644px;
+        @LH4: 805px;
+        @LH5: 663px;
+        @LH6: 588px;
+
+        width: @mobileWidth;
+        height: @mobileHeight;
+
+        left: 50%;
+        margin-left: -@mobileWidth * .5;
+
+        overflow: hidden;
+
+//        .image-bg('layout-mobile.jpg');
+
+        .top-group{
+            height: @LH1;
+
+            .logo{
+                .abs-div(108px, 19px, 263px, 41px, 0, 0, "top-group-logo-m.png");
+            }
+        }
+
+        .video-group{
+            height: @LH2;
+
+            .video-area{
+
+                @vw: 480px;
+                @vh: 278px;
+                @wGap: 0px;
+
+                position: absolute;
+                top:43px;
+                left:50%;
+
+
+                .video-container{
+                    left: -@vw*.5;
+
+                    .video-player{
+                        width: @vw;
+                        height: @vh;
+                        background: #ccc;
+
+                        margin-right: @wGap;
+                    }
+
+                }
+
+                .arrow-left{
+                    display:none;
+                }
+                .arrow-right{
+                    display:none;
+                }
+            }
+
+            .video-thumb-area{
+                @thumbWidth: 117px;
+                @thumbHeight: 67px;
+                @thumbGap:4px;
+
+                position: absolute;
+                top:333px;
+                left:0;
+                width: 500px;
+                height:@thumbHeight;
+
+                .video-thumb{
+                    position: relative;
+                    float:left;
+                    width:@thumbWidth;
+                    height: @thumbHeight;
+                    margin-right:@thumbGap;
+                    background: #ccc;
+
+                    transition: opacity .5s ease-out;
+
+                    &.disac3ive{
+                        opacity: .5;
+                    }
+                }
+            }
+
+            .bottom-buttons{
+                position: absolute;
+                bottom:auto;
+                left:12px;
+                top:8px;
+            }
+
+        }
+
+        .product-group{
+            background: #ffffff;
+            height: @LH3;
+
+            .content{
+                .abs-div(0px, 27px, 480px, 166px, 0, 0, "product-group-content-m.jpg");
+            }
+
+            .topic-container{
+                position: absolute;
+                top:0;
+                left:0;
+
+                .topic-1{
+                    .abs-div(6px, 199px, 470px, 424px, 0px, 0, "product-group-topic-1-m.jpg");
+                }
+                .topic-2{
+                    .abs-div(20px, 208px, 437px, 315px, @mobileWidth, 0, "product-group-topic-2-m.jpg");
+                }
+            }
+            .btn-left{
+                .abs-div(0px, 367px, 38px, 40px, 0, 0, "black-btn-left.png");
+                cursor: pointer;
+                &:active{
+                    background-repeat: repeat;
+                    background-position: 2px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
+                }
+            }
+            .btn-right{
+                .abs-div(442px, 367px, 38px, 40px, 0, 0, "black-btn-right.png");
+                cursor: pointer;
+                &:active{
+                    background-repeat: repeat;
+                    background-position: -2px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
+                }
+            }
+        }
+
+        .video-create-group{
+            background: #fceef3;
+            height: @LH4;
+
+            .top{
+                .abs-div(23px, 23px, 429px, 230px, 0, 0, "video-create-top-m.jpg");
+            }
+            .kv-area{
+                display: none;
+            }
+            .kv-area-m{
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                .kv-1{
+                    .abs-div(57px, 267px, 342px, 514px, 0px, 0, "video-create-kv-1-m.png");
+                }
+
+                .kv-2{
+                    .abs-div(58px, 267px, 341px, 514px, @mobileWidth, 0, "video-create-kv-2-m.png");
+                }
+
+                .kv-3{
+                    .abs-div(57px, 265px, 342px, 516px, @mobileWidth * 2, 0, "video-create-kv-3-m.png");
+                }
+
+                .kv-1, .kv-2, .kv-3{
+                    .btn{
+                        position: absolute;
+                        width: 268px;
+                        height: 53px;
+                        left:52px;
+                        bottom:28px;
+                        .image-bg("video-create-btn-go-m.png");
+                        cursor: pointer;
+                        &:active{
+                            margin-bottom: -2px;
+                        }
+                    }
+                }
+            }
+
+
+
+            .btn-left{
+                .abs-div(0px, 475px, 38px, 40px, 0, 0, "black-btn-left.png");
+                cursor: pointer;
+                &:active{
+                    background-repeat: repeat;
+                    background-position: -2px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
+                }
+            }
+            .btn-right{
+                .abs-div(442px, 475px, 38px, 40px, 0, 0, "black-btn-right.png");
+                cursor: pointer;
+                &:active{
+                    background-repeat: repeat;
+                    background-position: 2px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
+                }
+            }
+        }
+
+        .blogger-group{
+            background: #fcfcfc;
+            height: @LH5;
+
+            .top{
+                .abs-div(27px, 39px, 424px, 136px, 0, 0, "blogger-group-top-m.png");
+            }
+            .left{
+                display: none;
+            }
+
+            .blogger-container {
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                @gap: 250px;
+
+                .my-mixin2(1, 0, 62px, 195px, 170px, 215px);
+                .my-mixin2(2, 0, 248px, 195px, 170px, 215px);
+                .my-mixin2(3, 0, 62px, 423px, 170px, 215px);
+                .my-mixin2(4, 0, 248px, 423px, 170px, 215px);
+                .my-mixin2(5, 1, 62px, 195px, 170px, 215px);
+                .my-mixin2(6, 1, 248px, 195px, 170px, 215px);
+                .my-mixin2(7, 1, 62px, 423px, 170px, 215px);
+
+                .my-mixin2(@index; @groupIndex; @left; @top; @w; @h; @fileIndex: 1;) {
+                    .blogger-@{index} {
+                        .abs-div(@left, @top, @w, @h, @groupIndex * @mobileWidth, 0, "blogger-@{fileIndex}.png");
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .btn-left{
+                .abs-div(0px, 355px, 38px, 40px, 0, 0, "black-btn-left.png");
+                cursor: pointer;
+                &:active{
+                    background-repeat: repeat;
+                    background-position: -2px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
+                }
+            }
+            .btn-right{
+                .abs-div(442px, 355px, 38px, 40px, 0, 0, "black-btn-right.png");
+                cursor: pointer;
+                &:active{
+                    background-repeat: repeat;
+                    background-position: 2px;
+                }
+            }
+
+            transition: opacity .5s ease-out;
+            &.disactive{
+                opacity: 0;
+            }
+        }
+
+        .prize-group{
+            .image-bg("prize-group-bg-m.jpg");
+            height: @LH6;
+
+            .input-name, .input-email, .input-phone{
+                width: 270px;
+                height: 25px;
+            }
+
+            .input-name{
+                left: 121px;
+                top:181px;
+            }
+
+            .input-phone{
+                left: 121px;
+                top:227px;
+            }
+
+            .input-email{
+                left: 121px;
+                top:273px;
+            }
+
+            .check-privacy{
+                left: 24px;
+                top:322px;
+            }
+
+            .btn-retail{
+                .abs-div(132px, 427px, 221px, 41px, 0, 0, "prize-group-btn-retails.png");
+            }
+
+            .btn-send{
+                .abs-div(39px, 478px, 408px, 64px, 0, 0, "prize-group-btn-send-m.png");
+            }
+
+        }
+
+    }
+
+}

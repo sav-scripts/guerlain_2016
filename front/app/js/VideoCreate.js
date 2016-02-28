@@ -20,13 +20,16 @@
 
                 function setupTrigger(index)
                 {
-                    $doms['trigger-' + index] = $doms.container.find(".btn-"+index).on("click", function()
+                    $doms['trigger-' + index] = $doms.container.find(".btn-"+index).on("click", onTriggerClick);
+                    $doms.container.find(".kv-"+index+" .btn").on("click", onTriggerClick);
+
+                    function onTriggerClick()
                     {
                         doLogin(function()
-                       {
-                           VideoCreateForm.reset(index).show();
-                       });
-                    });
+                        {
+                            VideoCreateForm.reset(index).show();
+                        });
+                    }
                 }
             });
 

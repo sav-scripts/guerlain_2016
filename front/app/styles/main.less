@@ -17,7 +17,7 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow-x: auto;
     background: @background-color;
     padding: 0;
     margin: 0;
@@ -30,12 +30,6 @@ body{
     position: absolute;
     width: 100%;
     height: 100%;
-}
-#scene-container{
-    position: absolute;
-    width: 100%;
-    height: auto;
-//    overflow: hidden;
 }
 #invisible-container{
     position: absolute;
@@ -59,18 +53,27 @@ body{
 }
 
 /** main contents **/
+@pcWidth: 1920px;
+@pcHeight: 4350px;
+#scene-container{
+    position: absolute;
+    width: 100%;
+    height: @pcHeight;
+    overflow: hidden;
+    min-width: 1370px;
+}
 
 .main-contents{
 
-    @w: 1920px;
-    @h: 4350px;
 
     position: absolute;
-    width: @w;
-    height: @h;
+    width: @pcWidth;
+    height: @pcHeight;
 
     left: 50%;
-    margin-left: -@w * .5;
+    margin-left: -@pcWidth * .5;
+
+    overflow: hidden;
 
 //    .image-bg('layout-pc.png');
 
@@ -110,43 +113,58 @@ body{
             @vh: 546px;
             @wGap: 20px;
 
-            @totalWidth: @vw *3 + @wGap * 2;
-
             position: absolute;
             top:0;
             left:50%;
 
-            .video-player{
+
+            .video-container{
+
                 position: absolute;
-                width: @vw;
-                height: @vh;
-                background: #ccc;
                 top:0;
-            }
+                left: -@vw*.5;
 
-            .video1{
-                left: -@totalWidth * .5;
+                white-space: nowrap;
+                font-size: 0;
 
-            }
-            .video2{
-                left: -@totalWidth * .5 + (@vw + @wGap) * 1;
-            }
-            .video3{
-                left: -@totalWidth * .5 + (@vw + @wGap) * 2;
+                .video-player{
+                    position: relative;
+                    display: inline-block;
+                    width: @vw;
+                    height: @vh;
+                    background: #ccc;
+
+                    margin-right: @wGap;
+                }
+
             }
 
             .arrow-left{
                 .abs-div(-670px, 204px, 44px, 112px, 0, 0, "video-group-arrow-left.png");
                 cursor: pointer;
+
+
                 &:active{
                     margin-left: -10px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
                 }
             }
             .arrow-right{
                 .abs-div(620px, 204px, 44px, 112px, 0, 0, "video-group-arrow-right.png");
                 cursor: pointer;
+
+
                 &:active{
                     margin-left: 10px;
+                }
+
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
                 }
             }
         }
@@ -200,6 +218,7 @@ body{
                     top:0;
                     .image-bg("video-group-buttons.png");
                     background-position: @textOffset;
+
                 }
                 .icon{
                     position: absolute;
@@ -220,7 +239,7 @@ body{
         height: @LH3;
 
         .content{
-            .abs-div(0px, 30px, 1920px, 1018px, 0, 0, "product-ground-content.jpg");
+            .abs-div(0px, 30px, 1920px, 1018px, 0, 0, "product-group-content.jpg");
         }
     }
 
@@ -248,6 +267,22 @@ body{
                 .kv-@{index}{
                     .abs-div(@offset, 0, @kvw, @kvh, 0, 0, "video-create-kv.jpg");
                     background-position: -@offset;
+
+
+                    .hover-clip{
+                        .abs-div(0, 0, @kvw + 1px, @kvh, 0, 0, "video-create-kv-hover.jpg");
+                        background-position: -@offset;
+
+                        opacity: 0;
+
+                        transition: opacity .6s ease-out;
+
+                        &:hover{
+                            cursor: pointer;
+                            opacity: 1;
+                        }
+                    }
+
                 }
                 .btn-@{index}{
                     .abs-div(80px + @offset, 546px, 235px, 50px, 0, 0, "video-create-btn-go.png");
@@ -272,20 +307,28 @@ body{
             .abs-div(246px, 133px, 510px, 719px, 0, 0, "blogger-group-left.jpg");
         }
 
-        @gap: 250px;
 
-        .my-mixin(1, 0, 710px, 230px);
-        .my-mixin(2, 1, 710px, 230px);
-        .my-mixin(3, 2, 710px, 230px);
-        .my-mixin(4, 0, 590px, 540px);
-        .my-mixin(5, 1, 590px, 540px);
-        .my-mixin(6, 2, 590px, 540px);
-        .my-mixin(7, 3, 590px, 540px);
+        .blogger-container{
 
-        .my-mixin(@index; @numGaps; @startX; @startY; @w: 230px; @h: 290px; @fileIndex: 1;){
-            .blogger-@{index}{
-                .abs-div(@startX + @numGaps * @gap, @startY, @w, @h, 0, 0, "blogger-@{fileIndex}.png");
-                cursor: pointer;
+            position: absolute;
+            top:0;
+            left:0;
+
+            @gap: 250px;
+
+            .my-mixin(1, 0, 710px, 230px);
+            .my-mixin(2, 1, 710px, 230px);
+            .my-mixin(3, 2, 710px, 230px);
+            .my-mixin(4, 0, 590px, 540px);
+            .my-mixin(5, 1, 590px, 540px);
+            .my-mixin(6, 2, 590px, 540px);
+            .my-mixin(7, 3, 590px, 540px);
+
+            .my-mixin(@index; @numGaps; @startX; @startY; @w: 230px; @h: 290px; @fileIndex: 1;){
+                .blogger-@{index}{
+                    .abs-div(@startX + @numGaps * @gap, @startY, @w, @h, 0, 0, "blogger-@{fileIndex}.png");
+                    cursor: pointer;
+                }
             }
         }
     }
@@ -342,8 +385,6 @@ body{
         }
 
     }
-
-
 }
 
 
@@ -384,13 +425,6 @@ body{
             color: @field-font-color;
         }
     }
-}
-
-
-
-/** top-logo **/
-.top-logo{
-
 }
 
 /** video create **/
@@ -676,3 +710,5 @@ body{
         }
     }
 }
+
+@import "main-mobile.less";

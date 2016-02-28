@@ -3,7 +3,45 @@
 <head lang="en">
     <title>嬌蘭小黑裙  我的香氛唇膏| STYLE YOUR DRESS WITH COLOUR</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1334">
+
+
+
+    <script>
+
+        var wasUsedLandscape = false;
+        var rewrited = false;
+
+        updateViewport();
+        function updateViewport()
+        {
+            var portraitModeMinWidth = 480;
+            var landscapeModeMinWidth = 1370;
+
+            var divString, scaleRate, targetWidth;
+
+            if (wasUsedLandscape || (screen.width < portraitModeMinWidth && screen.width < screen.height))
+            {
+
+                targetWidth = portraitModeMinWidth;
+            }
+            else if(screen.width < landscapeModeMinWidth && screen.width > screen.height)
+            {
+                wasUsedLandscape = true;
+                targetWidth = landscapeModeMinWidth
+            }
+
+            if(targetWidth != null)
+            {
+                scaleRate =  screen.width/targetWidth;
+                var contentString = 'width='+targetWidth+'px,initial-scale='+scaleRate;
+                divString = '<meta id="myViewport" name="viewport" content="'+contentString+'">';
+                document.write(divString);
+
+                rewrited = true;
+            }
+        }
+
+    </script>
 
     <meta property="fb:app_id" content="xxx"/>
     <meta property="og:title" content="xxx" />
@@ -36,13 +74,25 @@
 
                 <div class="video-area">
 
-                    <div class="video1 video-player"></div>
-                    <div class="video2 video-player"></div>
-                    <div class="video3 video-player"></div>
+                    <div class="video-container">
+
+                        <div class="video-player" youtube-view="7v7O9GR9v1Q"></div>
+                        <div class="video-player" youtube-view="7v7O9GR9v1Q"></div>
+                        <div class="video-player" youtube-view="7v7O9GR9v1Q"></div>
+                        <div class="video-player" youtube-view="7v7O9GR9v1Q"></div>
+
+                    </div>
 
                     <div class="arrow-left"></div>
                     <div class="arrow-right"></div>
 
+                </div>
+
+                <div class="video-thumb-area">
+                    <div class="video-thumb"></div>
+                    <div class="video-thumb"></div>
+                    <div class="video-thumb"></div>
+                    <div class="video-thumb"></div>
                 </div>
 
                 <div class="bottom-buttons">
@@ -68,6 +118,14 @@
 
             <div class="product-group block-group">
                 <div class="content"></div>
+
+                <div class="topic-container">
+                    <div class="topic-1"></div>
+                    <div class="topic-2"></div>
+                </div>
+
+                <div class="btn-left"></div>
+                <div class="btn-right"></div>
             </div>
             <div class="video-create-group block-group">
 
@@ -75,26 +133,52 @@
                 <div class="top"></div>
 
                 <div class="kv-area">
-                    <div class="kv-1"></div>
-                    <div class="kv-2"></div>
-                    <div class="kv-3"></div>
+                    <div class="kv-1">
+                        <div class="hover-clip"></div>
+                    </div>
+                    <div class="kv-2">
+                        <div class="hover-clip"></div>
+                    </div>
+                    <div class="kv-3">
+                        <div class="hover-clip"></div>
+                    </div>
                     <div class="btn-1"></div>
                     <div class="btn-2"></div>
                     <div class="btn-3"></div>
                 </div>
 
+                <div class="kv-area-m">
+                    <div class="kv-1">
+                        <div class="btn"></div>
+                    </div>
+                    <div class="kv-2">
+                        <div class="btn"></div>
+                    </div>
+                    <div class="kv-3">
+                        <div class="btn"></div>
+                    </div>
+                </div>
+
+                <div class="btn-left"></div>
+                <div class="btn-right"></div>
 
             </div>
             <div class="blogger-group block-group">
                 <div class="top"></div>
                 <div class="left"></div>
-                <div class="blogger-1"></div>
-                <div class="blogger-2"></div>
-                <div class="blogger-3"></div>
-                <div class="blogger-4"></div>
-                <div class="blogger-5"></div>
-                <div class="blogger-6"></div>
-                <div class="blogger-7"></div>
+
+                <div class="blogger-container">
+                    <div class="blogger-1"></div>
+                    <div class="blogger-2"></div>
+                    <div class="blogger-3"></div>
+                    <div class="blogger-4"></div>
+                    <div class="blogger-5"></div>
+                    <div class="blogger-6"></div>
+                    <div class="blogger-7"></div>
+                </div>
+
+                <div class="btn-left"></div>
+                <div class="btn-right"></div>
             </div>
             <div class="prize-group block-group">
 
@@ -218,12 +302,14 @@
 
 
     <!-- build:js js/optimized.js -->
+    <script src="js/lib/jQuery.tubeplayer.min.js"></script>
     <script src="js/lib/engine.io.js"></script>
     <script src="js/lib/socket_handler.js"></script>
     <script src="js/lib/Utility.0.0.12.js"></script>
     <script src="js/lib/FBHelper.js"></script>
     <script src="js/lib/Helper.1.0.2.js"></script>
     <script src="js/Main.js"></script>
+    <script src="js/MainContent.js"></script>
     <script src="js/VideoCreate.js"></script>
     <script src="js/ServerProxy.js"></script>
     <script src="js/lib/SquareLoading.1.0.0.js"></script>
