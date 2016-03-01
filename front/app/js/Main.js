@@ -19,6 +19,8 @@
             fb_appid: "1120712347979943",
             fbPermissions: ['publish_actions'],
 
+            apiPath: "http://www.ozo-studio.com/marieclaire/20160303/",
+
             currentView:
             {
                 width: 0,
@@ -50,6 +52,7 @@
             VideoCreate.init();
             MainCover.init();
             MainContent.init();
+            VideoPopup.init();
 
 
             $(window).on("resize", onResize);
@@ -84,6 +87,8 @@
         cv.height = height;
 
         MainContent.resize();
+        VideoPopup.resize();
+        VideoCreateForm.resize();
     }
 
 }());

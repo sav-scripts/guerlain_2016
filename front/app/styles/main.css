@@ -915,6 +915,34 @@ body.lock-mode {
   background-image: url("../images/btn-close.png");
   background-size: cover;
 }
+/** video popup **/
+.video-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 300;
+  display: none;
+  background: #000000;
+}
+.video-popup .content {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.video-popup .btn-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 80px;
+  height: 80px;
+  background-image: url("../images/btn-close-white.png");
+  background-size: auto;
+  cursor: pointer;
+  z-index: 1;
+}
 @media (max-width: 480px) {
   #scene-container {
     height: 3170px;
@@ -1126,6 +1154,16 @@ body.lock-mode {
     margin-top: 0;
     background-image: url("../images/video-create-kv-3-m.png");
     background-size: cover;
+  }
+  .main-contents .video-create-group .kv-area-m .kv-1 .video-btn,
+  .main-contents .video-create-group .kv-area-m .kv-2 .video-btn,
+  .main-contents .video-create-group .kv-area-m .kv-3 .video-btn {
+    position: absolute;
+    right: 0;
+    bottom: 285px;
+    width: 314px;
+    height: 205px;
+    cursor: pointer;
   }
   .main-contents .video-create-group .kv-area-m .kv-1 .btn,
   .main-contents .video-create-group .kv-area-m .kv-2 .btn,
@@ -1379,5 +1417,173 @@ body.lock-mode {
     margin-top: 0;
     background-image: url("../images/prize-group-btn-send-m.png");
     background-size: cover;
+  }
+  /** video create form **/
+  .video-create-form {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .video-create-form .form-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 480px;
+    height: 2010px;
+    margin-left: -240px;
+    margin-top: -1005px;
+    background-color: white;
+  }
+  .video-create-form .form-container .title {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    width: 480px;
+    height: 259px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/video-form-title-m.png");
+    background-size: cover;
+  }
+  .video-create-form .form-container .check-text {
+    right: 104px;
+    bottom: 158px;
+  }
+  .video-create-form .form-container .deco {
+    right: 34px;
+    top: 1148px;
+    width: 136px;
+    height: 354px;
+    background-image: url("../images/check-form-deco-m.jpg");
+    background-size: auto;
+  }
+  .video-create-form .form-container .question-text {
+    position: absolute;
+    left: 106px;
+    top: 1665px;
+    width: 256px;
+    height: 16px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/video-form-question.png");
+    background-size: cover;
+  }
+  .video-create-form .form-container .input-field {
+    left: 44px;
+    top: 1692px;
+    width: 386px;
+    height: 101px;
+    border: 1px solid black;
+  }
+  .video-create-form .form-container .item-1,
+  .video-create-form .form-container .item-2,
+  .video-create-form .form-container .item-3 {
+    position: absolute;
+  }
+  .video-create-form .form-container .item-1 .left-part .help-text,
+  .video-create-form .form-container .item-2 .left-part .help-text,
+  .video-create-form .form-container .item-3 .left-part .help-text {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    width: 106px;
+    height: 39px;
+    margin-left: 0;
+    margin-top: 0;
+    background-image: url("../images/video-form-user-image-help-text.png");
+    background-size: cover;
+  }
+  .video-create-form .form-container .item-1 .right-part,
+  .video-create-form .form-container .item-2 .right-part,
+  .video-create-form .form-container .item-3 .right-part {
+    float: none;
+    margin-left: 0;
+    margin-top: 299px;
+  }
+  .video-create-form .form-container .item-1 .right-part .text-select,
+  .video-create-form .form-container .item-2 .right-part .text-select,
+  .video-create-form .form-container .item-3 .right-part .text-select {
+    width: 384px;
+    border: 1px solid black;
+  }
+  .video-create-form .form-container .item-1 {
+    top: 287px;
+    left: 45px;
+  }
+  .video-create-form .form-container .item-1 .left-part {
+    width: 384px;
+    height: 236px;
+  }
+  .video-create-form .form-container .item-1 .left-part .number-text {
+    position: absolute;
+    right: 27px;
+    bottom: 13px;
+    width: 25px;
+    height: 93px;
+    background-image: url("../images/video-form-number-1.png");
+    background-size: auto;
+  }
+  .video-create-form .form-container .item-2 {
+    top: 721px;
+    left: 45px;
+  }
+  .video-create-form .form-container .item-2 .left-part {
+    width: 243px;
+    height: 150px;
+  }
+  .video-create-form .form-container .item-2 .left-part .number-text {
+    position: absolute;
+    right: 12px;
+    bottom: 13px;
+    width: 65px;
+    height: 95px;
+    background-image: url("../images/video-form-number-2.png");
+    background-size: auto;
+  }
+  .video-create-form .form-container .item-3 {
+    top: 1157px;
+    left: 45px;
+  }
+  .video-create-form .form-container .item-3 .left-part {
+    width: 156px;
+    height: 206px;
+  }
+  .video-create-form .form-container .item-3 .left-part .number-text {
+    position: absolute;
+    right: 12px;
+    bottom: 13px;
+    width: 64px;
+    height: 97px;
+    background-image: url("../images/video-form-number-3.png");
+    background-size: auto;
+  }
+  .video-create-form .form-container .item-3 .right-part {
+    margin-top: 355px;
+  }
+  .video-create-form .form-container .bottom-group .check-privacy {
+    right: 374px;
+    bottom: 177px;
+  }
+  .video-create-form .form-container .bottom-group .check-fb-share {
+    right: 374px;
+    bottom: 155px;
+  }
+  .video-create-form .form-container .bottom-group .btn-send {
+    right: 38px;
+    bottom: 68px;
+    width: 403px;
+    height: 67px;
+    background-image: url("../images/btn-send-m.png");
+    background-size: auto;
+  }
+  .video-create-form .form-container .btn-close {
+    display: none;
+  }
+}
+@media (max-width: 480px) and (max-height: 2010px) {
+  .video-create-form .form-container {
+    position: relative;
+    top: 0;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 }

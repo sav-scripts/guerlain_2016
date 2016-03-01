@@ -18,6 +18,8 @@
                 setupTrigger(2);
                 setupTrigger(3);
 
+                //VideoCreateForm.reset(1).show();
+
                 function setupTrigger(index)
                 {
                     $doms['trigger-' + index] = $doms.container.find(".btn-"+index).on("click", onTriggerClick);
@@ -32,7 +34,6 @@
                     }
                 }
             });
-
         }
     };
 
@@ -158,6 +159,7 @@
         v1:
         [
             {
+                mw: 384, mh: 288,
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
@@ -166,6 +168,7 @@
                 ]
             },
             {
+                mw: 384, mh: 288,
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
@@ -174,6 +177,7 @@
                 ]
             },
             {
+                mw: 258, mh: 344,
                 w: 150, h: 200,
                 rw: 265, rh: 353,
                 texts: [
@@ -185,6 +189,7 @@
         v2:
         [
             {
+                mw: 384, mh: 288,
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
@@ -193,6 +198,7 @@
                 ]
             },
             {
+                mw: 384, mh: 288,
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
@@ -201,6 +207,7 @@
                 ]
             },
             {
+                mw: 258, mh: 344,
                 w: 150, h: 200,
                 rw: 265, rh: 353,
                 texts: [
@@ -212,6 +219,7 @@
         v3:
         [
             {
+                mw: 384, mh: 288,
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
@@ -220,6 +228,7 @@
                 ]
             },
             {
+                mw: 384, mh: 288,
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
@@ -228,6 +237,7 @@
                 ]
             },
             {
+                mw: 258, mh: 344,
                 w: 150, h: 200,
                 rw: 265, rh: 353,
                 texts: [
@@ -360,6 +370,12 @@
             $doms.btnSend.toggleClass("disable-mode", true);
 
             return _p;
+        },
+        resize: function()
+        {
+            updateSize(1);
+            updateSize(2);
+            updateSize(3);
         }
     };
 
@@ -380,6 +396,32 @@
                 $doms.textArea[0].value = _defaultText;
             }
         });
+    }
+
+    function updateSize(index)
+    {
+        if(_currentIndex == 0) return;
+
+        var settingGroup = _photoSettings["v" + _currentIndex];
+        var st = settingGroup[index-1];
+        var $item = $doms.items["i" + index];
+
+        var cv = Main.settings.currentView,
+            w, h;
+
+        if(cv.modeIndex == 0)
+        {
+            w = st.w;
+            h = st.h;
+        }
+        else
+        {
+            w = st.mw;
+            h = st.mh;
+        }
+
+
+        $item.leftPart.css("width", w).css("height", h);
     }
 
     function resetImageItems()
@@ -409,7 +451,7 @@
             }
 
             //console.log(item.container.length);
-            $item.leftPart.css("width", st.w).css("height", st.h);
+            updateSize(index);
 
             $item.textSelect.html('');
 

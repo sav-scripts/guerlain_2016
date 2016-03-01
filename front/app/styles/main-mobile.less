@@ -183,6 +183,18 @@
                 }
 
                 .kv-1, .kv-2, .kv-3{
+
+                    .video-btn{
+                        position: absolute;
+//                        background: rgba(255,0,0,.5);
+                        right:0;
+                        bottom:285px;
+                        width: 314px;
+                        height: 205px;
+                        cursor: pointer;
+                    }
+
+
                     .btn{
                         position: absolute;
                         width: 268px;
@@ -330,6 +342,189 @@
 
         }
 
+    }
+
+    /** video create form **/
+    .video-create-form{
+
+        overflow-x: hidden;
+        overflow-y: auto;
+
+        .form-container{
+
+            @w: 480px;
+            @h: 2010px;
+            @gap: 0px;
+            @minHeight: (@h + @gap * 2);
+
+            .centralized-div(50%, 50%, @w, @h);
+//            .image-bg('layout-video-form-mobile.png');
+            background-color: white;
+
+
+            @media (max-height: @minHeight) {
+                position: relative;
+                top:0;
+                margin-top: @gap;
+                margin-bottom: @gap;
+            }
+
+            //        .image-bg("demo-video-form.jpg");
+            //        .image-bg("video-form-base.jpg");
+
+
+
+
+            .title{
+                .abs-div(0px, 20px,480px,259px,0,0, "video-form-title-m.png");
+            }
+
+
+            .check-text{
+                right:104px;
+                bottom:158px;
+            }
+
+            .deco{
+                right:34px;
+                top:1148px;
+                width:136px;
+                height:354px;
+                .image-bg("check-form-deco-m.jpg");
+            }
+
+            .question-text{
+                .abs-div(106px, 1665px,256px,16px,0,0, "video-form-question.png");
+            }
+
+            .input-field{
+                left:44px;
+                top:1692px;
+                width:386px;
+                height:101px;
+
+                border: 1px solid black;
+            }
+
+            .item-1, .item-2, .item-3{
+                position: absolute;
+
+                // 384, 246
+
+                .left-part{
+
+                    .help-text{
+                        .abs-div(16px, 16px, 106px, 39px,0 ,0 , "video-form-user-image-help-text.png");
+                    }
+                }
+
+                .right-part{
+                    float:none;
+                    margin-left: 0;
+                    margin-top: 299px;
+
+                    .text-select{
+
+                        width: 384px;
+                        border: 1px solid black;
+                    }
+
+                }
+            }
+            .item-1{
+                top:287px;
+                left:45px;
+
+                .left-part{
+
+                    width: 384px;
+                    height: 236px;
+
+                    .number-text{
+                        position: absolute;
+                        right:27px;
+                        bottom:13px;
+                        width: 25px;
+                        height: 93px;
+                        .image-bg('video-form-number-1.png');
+                    }
+
+                }
+            }
+            .item-2{
+                top:669px + 52px;
+                left:45px;
+
+                .left-part{
+
+                    width: 243px;
+                    height: 150px;
+
+                    .number-text{
+                        position: absolute;
+                        right:12px;
+                        bottom:13px;
+                        width: 65px;
+                        height: 95px;
+                        .image-bg('video-form-number-2.png');
+                    }
+
+                }
+            }
+            .item-3{
+                top:1049px + 108px;
+                left:45px;
+
+                .left-part{
+
+                    width: 156px;
+                    height:206px;
+
+                    .number-text{
+                        position: absolute;
+                        right:12px;
+                        bottom:13px;
+                        width: 64px;
+                        height: 97px;
+                        .image-bg('video-form-number-3.png');
+                    }
+
+                }
+
+                .right-part{
+                    margin-top: 355px;
+                }
+            }
+
+
+            .bottom-group{
+
+                .check-privacy{
+                    right:374px;
+                    bottom: 177px;
+                }
+
+                .check-fb-share{
+                    right:374px;
+                    bottom: 155px;
+                }
+
+                .btn-send{
+                    right:38px;
+                    bottom:68px;
+                    width: 403px;
+                    height: 67px;
+                    .image-bg("btn-send-m.png");
+                }
+
+            }
+
+
+            .btn-close{
+                display: none;
+//                .abs-div(813px, 15px, 46px, 46px,0 ,0 , "btn-close.png");
+            }
+        }
     }
 
 }

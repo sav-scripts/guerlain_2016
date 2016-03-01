@@ -13,6 +13,7 @@
             _p.ProductGroup.init();
             _p.VideoCreateGroup.init();
             _p.BloggerGroup.init();
+            _p.PrizeGroup.init();
         },
         resize: function()
         {
@@ -115,7 +116,14 @@
 
         for(var i=0;i<_numContents;i++)
         {
-            $doms.videos[i].tubeplayer("pause");
+            if(i==_currentIndex)
+            {
+                $doms.videos[i].css("pointer-events", "auto");
+            }
+            else
+            {
+                $doms.videos[i].tubeplayer("pause").css("pointer-events", "none");
+            }
         }
 
         $doms.thumbs.each(function(i, dom)
@@ -254,6 +262,13 @@
 
             });
 
+            $doms.kvPc = $doms.container.find(".kv-area");
+            $doms.kvMobile = $doms.container.find(".kv-area-m");
+
+            setupKv(1, '7v7O9GR9v1Q');
+            setupKv(2, '7v7O9GR9v1Q');
+            setupKv(3, '7v7O9GR9v1Q');
+
             _isLocking = false;
         },
         resize: function()
@@ -265,6 +280,18 @@
             }
         }
     };
+
+    function setupKv(index, tubeId)
+    {
+        $doms.kvPc.find(".kv-" + index).on("click", trigger);
+        $doms.kvMobile.find(".kv-" + index + " .video-btn").on('click', trigger);
+
+        function trigger()
+        {
+            VideoPopup.show(tubeId);
+        }
+
+    }
 
     function toContent(index, duration)
     {
@@ -376,12 +403,118 @@
 
     var $doms = {};
 
-    window.MainContent.PrizeGroup =
+    _p = window.MainContent.PrizeGroup =
     {
         init: function()
         {
+            $doms.container = $(".prize-group");
+
+            $doms.fields =
+            {
+                "name": $doms.container.find(".input-name"),
+                "phone": $doms.container.find(".input-phone"),
+                "email": $doms.container.find(".input-email")
+            };
+
+            $doms.privacyCheck = $doms.container.find(".check-privacy");
+
+            $doms.btnRetail = $doms.container.find(".btn-retail").on("click", function()
+            {
+
+            });
+
+            $doms.btnSend = $doms.container.find(".btn-send").on("click", function()
+            {
+                trySend();
+            });
+
+            _p.reset();
+        },
+        reset: function()
+        {
+
+            $doms.fields.name.val('');
+            $doms.fields.phone.val('');
+            $doms.fields.email.val('');
+
+            $doms.privacyCheck.prop("checked", false);
 
         }
     };
+
+    function trySend()
+    {
+
+        var formObj = checkForm();
+
+        if(formObj) execute(formObj);
+
+        function execute(params)
+        {
+            Loading.progress("表單送出中... 請稍候").show();
+
+            $.getJSON(Main.settings.apiPath + 'send_form.ashx?callback=?', params, function(data)
+            {
+                if(data)
+                {
+                    if(data.error)
+                    {
+                        alert(data.error);
+                    }
+                    else
+                    {
+                        alert("資料成功送出");
+                        _p.reset();
+                    }
+                }
+                else
+                {
+                    _p.reset();
+                    alert("資料傳送失敗");
+                }
+
+                Loading.hide();
+            }).fail(function()
+            {
+                alert("無法取得伺服器回應");
+                Loading.hide();
+            });
+        }
+    }
+
+    function checkForm()
+    {
+
+        var formObj={};
+        var dom;
+
+        if(!$doms.privacyCheck.prop("checked"))
+        {
+            alert('您必須同意 "嬌蘭Guerlain 隱私權條款/注意事項" 才能參加活動');
+            return;
+        }
+
+        dom = $doms.fields.name[0];
+        if(PatternSamples.onlySpace.test(dom.value))
+        {
+            alert('請輸入您的名稱'); dom.focus(); return;
+        }else formObj.user_name = dom.value;
+
+        dom = $doms.fields.phone[0];
+        if(!PatternSamples.phone.test(dom.value))
+        {
+            alert('請輸入正確的手機號碼'); dom.focus(); return;
+        }
+        else formObj.phone = dom.value;
+
+        dom = $doms.fields.email[0];
+        if(!PatternSamples.email.test(dom.value))
+        {
+            alert('請輸入您的電子郵件信箱'); dom.focus(); return;
+        }
+        else formObj.email = dom.value;
+
+        return formObj;
+    }
 
 }());
