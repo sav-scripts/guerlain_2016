@@ -3,6 +3,8 @@
 design
 /test
 /back/source
+/back/out
+/front/dist
 tmp
 ffmpeg.exe
 bgm.mp3

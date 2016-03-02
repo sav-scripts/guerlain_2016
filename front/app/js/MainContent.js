@@ -265,9 +265,9 @@
             $doms.kvPc = $doms.container.find(".kv-area");
             $doms.kvMobile = $doms.container.find(".kv-area-m");
 
-            setupKv(1, '7v7O9GR9v1Q');
-            setupKv(2, '7v7O9GR9v1Q');
-            setupKv(3, '7v7O9GR9v1Q');
+            setupKv(1, '7XaPPwbfo9E');
+            setupKv(2, 'kX0F0GzvcrE');
+            setupKv(3, 'AOGSTr6U7wc');
 
             _isLocking = false;
         },

@@ -163,8 +163,9 @@
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
-                    "video1, image 1, text1",
-                    "video1, image 1, text2"
+                    "Clever聰明",
+                    "Naughty調皮",
+                    "Mischievous淘氣"
                 ]
             },
             {
@@ -172,8 +173,9 @@
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
-                    "video1, image 2, text1",
-                    "video1, image 2, text2"
+                    "Cunning漂亮",
+                    "Ingenious靈巧",
+                    "Bright開朗"
                 ]
             },
             {
@@ -181,8 +183,9 @@
                 w: 150, h: 200,
                 rw: 265, rh: 353,
                 texts: [
-                    "video1, image 3, text1",
-                    "video1, image 3, text2"
+                    "Alert靈活",
+                    "Witty詼諧",
+                    "Subtle難捉摸"
                 ]
             }
         ],
@@ -193,8 +196,9 @@
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
-                    "video2, image 1, text1",
-                    "video2, image 1, text2"
+                    "Bewitching令人陶醉",
+                    "Lovely優美",
+                    "Angelic天使感覺"
                 ]
             },
             {
@@ -202,8 +206,9 @@
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
-                    "video2, image 2, text1",
-                    "video2, image 2, text2"
+                    "Fascinating迷人",
+                    "Ravishing吸引人",
+                    "Adorable可愛"
                 ]
             },
             {
@@ -211,8 +216,9 @@
                 w: 150, h: 200,
                 rw: 265, rh: 353,
                 texts: [
-                    "video2, image 3, text1",
-                    "video2, image 3, text2"
+                    "Winning可愛",
+                    "Pleasant優美",
+                    "Enchanting旖旎"
                 ]
             }
         ],
@@ -223,8 +229,9 @@
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
-                    "video3, image 1, text1",
-                    "video3, image 1, text2"
+                    "Gorgeous華麗",
+                    "Stylish時尚",
+                    "Modish流行"
                 ]
             },
             {
@@ -232,8 +239,9 @@
                 w: 200, h: 150,
                 rw: 353, rh: 265,
                 texts: [
-                    "video3, image 2, text1",
-                    "video3, image 2, text2"
+                    "Trendy新潮",
+                    "Chic別緻",
+                    "Dapper俐落"
                 ]
             },
             {
@@ -241,8 +249,9 @@
                 w: 150, h: 200,
                 rw: 265, rh: 353,
                 texts: [
-                    "video3, image 3, text1",
-                    "video3, image 3, text2"
+                    "Neat靈巧",
+                    "Natty敏捷",
+                    "Saucy漂亮"
                 ]
             }
         ]
@@ -267,6 +276,12 @@
         init: function()
         {
             $doms.container = $(".video-create-form").css("visibility", "visible").css("display", "none");
+
+            if(Main.settings.isIE)
+            {
+                $doms.container.find(".select-icon").css("display", "none");
+            }
+
             $doms.formContainer = $doms.container.find(".form-container");
 
             $doms.btnClose = $doms.container.find(".btn-close").on("click", function()
@@ -353,8 +368,8 @@
             _currentIndex = index;
             resetImageItems();
 
-            $doms.checkPrivacy.prop("checked", false);
-            $doms.checkFbShare.prop("checked", false);
+            $doms.checkPrivacy.prop("checked", true);
+            $doms.checkFbShare.prop("checked", true);
 
             $doms.textArea[0].value = _defaultText;
 
@@ -616,17 +631,18 @@
 
     function sendToServer()
     {
-        var array = [], i, $item;
+        var imageArray = [], textIndexArray = [], i, $item;
         for(i=0;i<3;i++)
         {
             $item = $doms.items["i"+(i+1)];
-            array[i] = $item.canvas.toDataURL("image/jpeg", .95).replace(/^data:image\/jpeg;base64,/, "");
+            imageArray[i] = $item.canvas.toDataURL("image/jpeg", .95).replace(/^data:image\/jpeg;base64,/, "");
+            textIndexArray[i] = $doms.items['i' + (i+1)].textSelect[0].selectedIndex;
         }
 
         var shareText = $doms.textArea[0].value;
         if(shareText == _defaultText) shareText = '';
 
-        ServerProxy.start(_currentIndex, array, shareText, function(success)
+        ServerProxy.start(_currentIndex, imageArray, textIndexArray, shareText, function(success)
         {
             if(success)
             {

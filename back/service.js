@@ -24,15 +24,17 @@ server.on('connection', function(socket)
     logger.info("on connect");
 
     var _fb = new Facebook({ appID: '1120712347979943', secret: '26d329129e9f1ec34b37bebd9cba943d', fileUpload: true }),
-        _folderName,
         _fb_uid,
         userObj;
 
 
     socket.on('close', function ()
     {
+
         if(userObj)
         {
+            console.log("user: " + userObj.id + " closed");
+
             delete _userDic[userObj.id];
 
 
@@ -44,6 +46,7 @@ server.on('connection', function(socket)
                 });
             }
         }
+
     });
 
     socket.on('message', function (data)
@@ -75,12 +78,13 @@ server.on('connection', function(socket)
             {
                 sendResponse(false, {error:"fb account already connected, please close extra connect"});
             }
-            else if(!params.imageArray || params.imageArray.length != 3)
+            else if(!params.imageArray || params.imageArray.length != 3 || !params.textIndexArray || params.textIndexArray.length != 3)
             {
                 sendResponse(false, {error:"lack images"});
             }
             else
             {
+
                 _fb_uid = params.fbUserId;
 
                 if(!params.shareText) params.shareText = '';
@@ -120,7 +124,7 @@ server.on('connection', function(socket)
 
                                     logger.log("creating video for: " + userObj.id);
 
-                                    vc.streamCombine(userObj.id, params.videoIndex, function(err, data)
+                                    vc.streamCombine(userObj.id, params.videoIndex, params.textIndexArray, function(err, data)
                                     {
                                         if(err)
                                         {

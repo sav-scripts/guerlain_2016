@@ -94,7 +94,6 @@ body.lock-mode {
   display: inline-block;
   width: 1186px;
   height: 546px;
-  background: #ccc;
   margin-right: 20px;
 }
 .main-contents .video-group .video-area .arrow-left {
@@ -450,6 +449,31 @@ body.lock-mode {
   background-size: cover;
   cursor: pointer;
 }
+.main-contents .blogger-group .blogger-container .blogger-1 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-1 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-1 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
 .main-contents .blogger-group .blogger-container .blogger-2 {
   position: absolute;
   left: 960px;
@@ -458,9 +482,34 @@ body.lock-mode {
   height: 290px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/blogger-1.png");
+  background-image: url("../images/blogger-2.png");
   background-size: cover;
   cursor: pointer;
+}
+.main-contents .blogger-group .blogger-container .blogger-2 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-2 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-2 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 .main-contents .blogger-group .blogger-container .blogger-3 {
   position: absolute;
@@ -470,9 +519,34 @@ body.lock-mode {
   height: 290px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/blogger-1.png");
+  background-image: url("../images/blogger-3.png");
   background-size: cover;
   cursor: pointer;
+}
+.main-contents .blogger-group .blogger-container .blogger-3 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-3 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-3 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 .main-contents .blogger-group .blogger-container .blogger-4 {
   position: absolute;
@@ -482,9 +556,34 @@ body.lock-mode {
   height: 290px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/blogger-1.png");
+  background-image: url("../images/blogger-4.png");
   background-size: cover;
   cursor: pointer;
+}
+.main-contents .blogger-group .blogger-container .blogger-4 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-4 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-4 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 .main-contents .blogger-group .blogger-container .blogger-5 {
   position: absolute;
@@ -494,9 +593,34 @@ body.lock-mode {
   height: 290px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/blogger-1.png");
+  background-image: url("../images/blogger-5.png");
   background-size: cover;
   cursor: pointer;
+}
+.main-contents .blogger-group .blogger-container .blogger-5 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-5 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-5 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 .main-contents .blogger-group .blogger-container .blogger-6 {
   position: absolute;
@@ -506,9 +630,34 @@ body.lock-mode {
   height: 290px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/blogger-1.png");
+  background-image: url("../images/blogger-6.png");
   background-size: cover;
   cursor: pointer;
+}
+.main-contents .blogger-group .blogger-container .blogger-6 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-6 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-6 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 .main-contents .blogger-group .blogger-container .blogger-7 {
   position: absolute;
@@ -518,9 +667,34 @@ body.lock-mode {
   height: 290px;
   margin-left: 0;
   margin-top: 0;
-  background-image: url("../images/blogger-1.png");
+  background-image: url("../images/blogger-7.png");
   background-size: cover;
   cursor: pointer;
+}
+.main-contents .blogger-group .blogger-container .blogger-7 .blogger-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  width: 224px;
+  height: 283px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+.main-contents .blogger-group .blogger-container .blogger-7 .blogger-cover:hover {
+  opacity: 1;
+}
+.main-contents .blogger-group .blogger-container .blogger-7 .blogger-cover .coming-soon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 14px;
+  margin-top: -15px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 20px;
+  color: white;
+  text-align: center;
 }
 .main-contents .prize-group {
   background-image: url("../images/prize-group-bg.jpg");
@@ -1008,7 +1182,23 @@ body.lock-mode {
     background: #ccc;
     transition: opacity 0.5s ease-out;
   }
-  .main-contents .video-group .video-thumb-area .video-thumb.disac3ive {
+  .main-contents .video-group .video-thumb-area .video-thumb:nth-child(1) {
+    background-image: url("../images/video-group-thumb-1.png");
+    background-size: auto;
+  }
+  .main-contents .video-group .video-thumb-area .video-thumb:nth-child(2) {
+    background-image: url("../images/video-group-thumb-2.png");
+    background-size: auto;
+  }
+  .main-contents .video-group .video-thumb-area .video-thumb:nth-child(3) {
+    background-image: url("../images/video-group-thumb-3.png");
+    background-size: auto;
+  }
+  .main-contents .video-group .video-thumb-area .video-thumb:nth-child(4) {
+    background-image: url("../images/video-group-thumb-4.png");
+    background-size: auto;
+  }
+  .main-contents .video-group .video-thumb-area .video-thumb.disactive {
     opacity: .5;
   }
   .main-contents .video-group .bottom-buttons {
@@ -1225,7 +1415,6 @@ body.lock-mode {
   .main-contents .blogger-group {
     background: #fcfcfc;
     height: 663px;
-    transition: opacity 0.5s ease-out;
   }
   .main-contents .blogger-group .top {
     position: absolute;
@@ -1258,6 +1447,11 @@ body.lock-mode {
     background-size: cover;
     cursor: pointer;
   }
+  .main-contents .blogger-group .blogger-container .blogger-1 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
+  }
   .main-contents .blogger-group .blogger-container .blogger-2 {
     position: absolute;
     left: 248px;
@@ -1266,9 +1460,14 @@ body.lock-mode {
     height: 215px;
     margin-left: 0px;
     margin-top: 0;
-    background-image: url("../images/blogger-1.png");
+    background-image: url("../images/blogger-2.png");
     background-size: cover;
     cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-2 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
   }
   .main-contents .blogger-group .blogger-container .blogger-3 {
     position: absolute;
@@ -1278,9 +1477,14 @@ body.lock-mode {
     height: 215px;
     margin-left: 0px;
     margin-top: 0;
-    background-image: url("../images/blogger-1.png");
+    background-image: url("../images/blogger-3.png");
     background-size: cover;
     cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-3 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
   }
   .main-contents .blogger-group .blogger-container .blogger-4 {
     position: absolute;
@@ -1290,9 +1494,14 @@ body.lock-mode {
     height: 215px;
     margin-left: 0px;
     margin-top: 0;
-    background-image: url("../images/blogger-1.png");
+    background-image: url("../images/blogger-4.png");
     background-size: cover;
     cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-4 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
   }
   .main-contents .blogger-group .blogger-container .blogger-5 {
     position: absolute;
@@ -1302,9 +1511,14 @@ body.lock-mode {
     height: 215px;
     margin-left: 480px;
     margin-top: 0;
-    background-image: url("../images/blogger-1.png");
+    background-image: url("../images/blogger-5.png");
     background-size: cover;
     cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-5 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
   }
   .main-contents .blogger-group .blogger-container .blogger-6 {
     position: absolute;
@@ -1314,9 +1528,14 @@ body.lock-mode {
     height: 215px;
     margin-left: 480px;
     margin-top: 0;
-    background-image: url("../images/blogger-1.png");
+    background-image: url("../images/blogger-6.png");
     background-size: cover;
     cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-6 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
   }
   .main-contents .blogger-group .blogger-container .blogger-7 {
     position: absolute;
@@ -1326,9 +1545,14 @@ body.lock-mode {
     height: 215px;
     margin-left: 480px;
     margin-top: 0;
-    background-image: url("../images/blogger-1.png");
+    background-image: url("../images/blogger-7.png");
     background-size: cover;
     cursor: pointer;
+  }
+  .main-contents .blogger-group .blogger-container .blogger-7 .blogger-cover {
+    width: 166px;
+    height: 209px;
+    opacity: 1;
   }
   .main-contents .blogger-group .btn-left {
     position: absolute;
@@ -1361,12 +1585,13 @@ body.lock-mode {
     background-image: url("../images/black-btn-right.png");
     background-size: cover;
     cursor: pointer;
+    transition: opacity 0.5s ease-out;
   }
   .main-contents .blogger-group .btn-right:active {
     background-repeat: repeat;
     background-position: 2px;
   }
-  .main-contents .blogger-group.disactive {
+  .main-contents .blogger-group .btn-right.disactive {
     opacity: 0;
   }
   .main-contents .prize-group {
@@ -1428,9 +1653,9 @@ body.lock-mode {
     left: 50%;
     top: 50%;
     width: 480px;
-    height: 2010px;
+    height: 2090px;
     margin-left: -240px;
-    margin-top: -1005px;
+    margin-top: -1045px;
     background-color: white;
   }
   .video-create-form .form-container .title {
@@ -1446,7 +1671,7 @@ body.lock-mode {
   }
   .video-create-form .form-container .check-text {
     right: 104px;
-    bottom: 158px;
+    bottom: 218px;
   }
   .video-create-form .form-container .deco {
     right: 34px;
@@ -1559,6 +1784,9 @@ body.lock-mode {
   .video-create-form .form-container .item-3 .right-part {
     margin-top: 355px;
   }
+  .video-create-form .form-container .bottom-group {
+    margin-bottom: 60px;
+  }
   .video-create-form .form-container .bottom-group .check-privacy {
     right: 374px;
     bottom: 177px;
@@ -1576,10 +1804,17 @@ body.lock-mode {
     background-size: auto;
   }
   .video-create-form .form-container .btn-close {
-    display: none;
+    left: 50%;
+    margin-left: -25px;
+    top: auto;
+    bottom: 40px;
+    width: 50px;
+    height: 50px;
+    background-image: url("../images/btn-close-m.png");
+    background-size: auto;
   }
 }
-@media (max-width: 480px) and (max-height: 2010px) {
+@media (max-width: 480px) and (max-height: 2090px) {
   .video-create-form .form-container {
     position: relative;
     top: 0;

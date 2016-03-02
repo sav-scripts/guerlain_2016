@@ -82,6 +82,8 @@
                 width: 500px;
                 height:@thumbHeight;
 
+
+
                 .video-thumb{
                     position: relative;
                     float:left;
@@ -90,9 +92,25 @@
                     margin-right:@thumbGap;
                     background: #ccc;
 
+                    &:nth-child(1){
+                        .image-bg("video-group-thumb-1.png");
+                    }
+
+                    &:nth-child(2){
+                        .image-bg("video-group-thumb-2.png");
+                    }
+
+                    &:nth-child(3){
+                        .image-bg("video-group-thumb-3.png");
+                    }
+
+                    &:nth-child(4){
+                        .image-bg("video-group-thumb-4.png");
+                    }
+
                     transition: opacity .5s ease-out;
 
-                    &.disac3ive{
+                    &.disactive{
                         opacity: .5;
                     }
                 }
@@ -267,10 +285,21 @@
                 .my-mixin2(6, 1, 248px, 195px, 170px, 215px);
                 .my-mixin2(7, 1, 62px, 423px, 170px, 215px);
 
-                .my-mixin2(@index; @groupIndex; @left; @top; @w; @h; @fileIndex: 1;) {
+                .my-mixin2(@index; @groupIndex; @left; @top; @w; @h;) {
                     .blogger-@{index} {
-                        .abs-div(@left, @top, @w, @h, @groupIndex * @mobileWidth, 0, "blogger-@{fileIndex}.png");
+                        .abs-div(@left, @top, @w, @h, @groupIndex * @mobileWidth, 0, "blogger-@{index}.png");
                         cursor: pointer;
+
+
+                        .blogger-cover{
+                            width: 166px;
+                            height: 209px;
+
+
+                            opacity: 1;
+
+                        }
+
                     }
                 }
             }
@@ -295,11 +324,11 @@
                     background-repeat: repeat;
                     background-position: 2px;
                 }
-            }
 
-            transition: opacity .5s ease-out;
-            &.disactive{
-                opacity: 0;
+                transition: opacity .5s ease-out;
+                &.disactive{
+                    opacity: 0;
+                }
             }
         }
 
@@ -353,7 +382,7 @@
         .form-container{
 
             @w: 480px;
-            @h: 2010px;
+            @h: 2090px;
             @gap: 0px;
             @minHeight: (@h + @gap * 2);
 
@@ -382,7 +411,7 @@
 
             .check-text{
                 right:104px;
-                bottom:158px;
+                bottom:218px;
             }
 
             .deco{
@@ -499,6 +528,8 @@
 
             .bottom-group{
 
+                margin-bottom: 60px;
+
                 .check-privacy{
                     right:374px;
                     bottom: 177px;
@@ -521,8 +552,15 @@
 
 
             .btn-close{
-                display: none;
+//                display: none;
 //                .abs-div(813px, 15px, 46px, 46px,0 ,0 , "btn-close.png");
+                left: 50%;
+                margin-left: -25px;
+                top: auto;
+                bottom:40px;
+                width: 50px;
+                height: 50px;
+                .image-bg("btn-close-m.png");
             }
         }
     }

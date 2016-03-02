@@ -41,6 +41,8 @@
                 }
             }
 
+            _p.settings.isIE = msieversion() !== false;
+
             _p.settings.isiOsChrom = navigator.userAgent.match('CriOS');
             //_p.settings.isiOsChrom = true;
 
@@ -72,6 +74,17 @@
             $doms.body.toggleClass("lock-mode", false);
         }
     };
+
+    function msieversion() {
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer, return version number
+            return (parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+        else                 // If another browser, return 0
+            return false;
+    }
 
     function onResize()
     {

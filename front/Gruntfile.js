@@ -123,4 +123,18 @@ module.exports = function(grunt)
         'usemin',
         'clean:release'
     ]);
+
+    grunt.registerTask("script",
+        [
+            'clean:build',
+            'jshint',
+            'less:release',
+            'useminPrepare',
+            'concat',
+            'uglify',
+            'copy',
+            'filerev',
+            'usemin',
+            'clean:release'
+        ]);
 };
