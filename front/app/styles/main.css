@@ -1073,6 +1073,17 @@ body.lock-mode {
   right: 547px;
   bottom: 34px;
 }
+.video-create-form .form-container .bottom-group .share-text-tag {
+  position: absolute;
+  right: 10px;
+  bottom: 121px;
+  width: 290px;
+  height: 50px;
+  font-family: '微軟正黑體', "Heiti TC", serif;
+  font-size: 14px;
+  color: black;
+  line-height: 24px;
+}
 .video-create-form .form-container .bottom-group .btn-privacy {
   position: absolute;
   right: 299px;
@@ -1679,9 +1690,9 @@ body.lock-mode {
     left: 50%;
     top: 50%;
     width: 480px;
-    height: 2090px;
+    height: 2150px;
     margin-left: -240px;
-    margin-top: -1045px;
+    margin-top: -1075px;
     background-color: white;
   }
   .video-create-form .form-container .title {
@@ -1813,6 +1824,16 @@ body.lock-mode {
   .video-create-form .form-container .bottom-group {
     margin-bottom: 60px;
   }
+  .video-create-form .form-container .bottom-group .share-text-tag {
+    right: 79px;
+    bottom: 226px;
+    width: 290px;
+    height: 50px;
+    font-family: '微軟正黑體', "Heiti TC", serif;
+    font-size: 14px;
+    color: black;
+    line-height: 24px;
+  }
   .video-create-form .form-container .bottom-group .check-privacy {
     right: 374px;
     bottom: 177px;
@@ -1844,7 +1865,7 @@ body.lock-mode {
     background-size: auto;
   }
 }
-@media (max-width: 480px) and (max-height: 2090px) {
+@media (max-width: 480px) and (max-height: 2150px) {
   .video-create-form .form-container {
     position: relative;
     top: 0;

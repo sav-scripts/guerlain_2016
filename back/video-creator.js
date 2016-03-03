@@ -14,13 +14,13 @@ var st =
                 [
                     {index: 0, startFrame:73, endFrame:145, offsetX:174, offsetY: 9, rotation:-4.1},
                     {index: 1, startFrame:177, endFrame:250, offsetX:-122, offsetY: 10, rotation:-1.8},
-                    {index: 2, startFrame:291, endFrame:465, offsetX:97, offsetY: 0, rotation:3.5}
+                    {index: 2, startFrame:291, endFrame:364, offsetX:97, offsetY: 0, rotation:3.5}
                 ],
                 text:
                     [
                         {start:73, end:145},
                         {start:177, end:250},
-                        {start:291, end:465}
+                        {start:291, end:364}
                     ]
             },
             v2:
@@ -307,6 +307,9 @@ function getComposeString(id, videoIndex, frameIndex, textIndexArray)
 
 }
 
+
+//testCombine("u0", 1, 450, [1, 2, 3]);
+
 function testCombine(id, videoIndex, frameIndex, textIndexArray)
 {
     var sObj = getComposeString("u0", videoIndex, frameIndex, textIndexArray);
@@ -327,6 +330,7 @@ function testCombine(id, videoIndex, frameIndex, textIndexArray)
     });
 
 }
+
 
 
 /** tests **/

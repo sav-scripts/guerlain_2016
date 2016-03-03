@@ -437,7 +437,7 @@
             $doms.fields.phone.val('');
             $doms.fields.email.val('');
 
-            $doms.privacyCheck.prop("checked", false);
+            $doms.privacyCheck.prop("checked", true);
 
         }
     };
@@ -452,6 +452,7 @@
         function execute(params)
         {
             Loading.progress("表單送出中... 請稍候").show();
+
 
             $.getJSON(Main.settings.apiPath + 'send_form.ashx?callback=?', params, function(data)
             {
@@ -478,7 +479,11 @@
             {
                 alert("無法取得伺服器回應");
                 Loading.hide();
+            }).done(function()
+            {
+                console.log("done");
             });
+
         }
     }
 
