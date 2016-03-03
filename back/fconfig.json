@@ -1,0 +1,7 @@
+{
+  "uid": "guerlain-service",
+  "append": true,
+  "watch": true,
+  "script": "./service.js",
+  "sourceDir": "./"
+}

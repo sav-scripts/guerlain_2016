@@ -27,10 +27,18 @@
 
                     function onTriggerClick()
                     {
-                        doLogin(function()
+                        if(Modernizr.canvas && Modernizr.websockets)
                         {
-                            VideoCreateForm.reset(index).show();
-                        });
+                            doLogin(function()
+                            {
+                                VideoCreateForm.reset(index).show();
+                            });
+                        }
+                        else
+                        {
+                            alert("您的瀏覽器不支援一些功能, 請使用較新版的瀏覽器來進行此操作.");
+                        }
+
                     }
                 }
             });

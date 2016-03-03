@@ -730,6 +730,16 @@ body.lock-mode {
   left: 390px;
   top: 336px;
 }
+.main-contents .prize-group .btn-privacy {
+  position: absolute;
+  left: 444px;
+  top: 333px;
+  width: 245px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  border-bottom: 1px solid white;
+}
 .main-contents .prize-group .btn-retail {
   position: absolute;
   left: 394px;
@@ -1063,6 +1073,16 @@ body.lock-mode {
   right: 547px;
   bottom: 34px;
 }
+.video-create-form .form-container .bottom-group .btn-privacy {
+  position: absolute;
+  right: 299px;
+  bottom: 53px;
+  width: 205px;
+  height: 26px;
+  background: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  border-bottom: 1px solid black;
+}
 .video-create-form .form-container .bottom-group .btn-send {
   cursor: pointer;
   position: absolute;
@@ -1317,7 +1337,7 @@ body.lock-mode {
     left: 57px;
     top: 267px;
     width: 342px;
-    height: 514px;
+    height: 516px;
     margin-left: 0px;
     margin-top: 0;
     background-image: url("../images/video-create-kv-1-m.png");
@@ -1325,10 +1345,10 @@ body.lock-mode {
   }
   .main-contents .video-create-group .kv-area-m .kv-2 {
     position: absolute;
-    left: 58px;
+    left: 57px;
     top: 267px;
-    width: 341px;
-    height: 514px;
+    width: 342px;
+    height: 516px;
     margin-left: 480px;
     margin-top: 0;
     background-image: url("../images/video-create-kv-2-m.png");
@@ -1337,7 +1357,7 @@ body.lock-mode {
   .main-contents .video-create-group .kv-area-m .kv-3 {
     position: absolute;
     left: 57px;
-    top: 265px;
+    top: 267px;
     width: 342px;
     height: 516px;
     margin-left: 960px;
@@ -1621,6 +1641,12 @@ body.lock-mode {
     left: 24px;
     top: 322px;
   }
+  .main-contents .prize-group .btn-privacy {
+    left: 80px;
+    top: 318px;
+    width: 187px;
+    height: 26px;
+  }
   .main-contents .prize-group .btn-retail {
     position: absolute;
     left: 132px;
@@ -1794,6 +1820,10 @@ body.lock-mode {
   .video-create-form .form-container .bottom-group .check-fb-share {
     right: 374px;
     bottom: 155px;
+  }
+  .video-create-form .form-container .bottom-group .btn-privacy {
+    right: 126px;
+    bottom: 175px;
   }
   .video-create-form .form-container .bottom-group .btn-send {
     right: 38px;
