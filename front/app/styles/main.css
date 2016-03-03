@@ -1150,12 +1150,12 @@ body.lock-mode {
 }
 @media (max-width: 480px) {
   #scene-container {
-    height: 3170px;
+    height: 3210px;
     min-width: inherit;
   }
   .main-contents {
     width: 480px;
-    height: 3170px;
+    height: 3210px;
     left: 50%;
     margin-left: -240px;
     overflow: hidden;
@@ -1322,14 +1322,14 @@ body.lock-mode {
   }
   .main-contents .video-create-group {
     background: #fceef3;
-    height: 805px;
+    height: 845px;
   }
   .main-contents .video-create-group .top {
     position: absolute;
     left: 23px;
     top: 23px;
     width: 429px;
-    height: 230px;
+    height: 270px;
     margin-left: 0;
     margin-top: 0;
     background-image: url("../images/video-create-top-m.jpg");
@@ -1346,7 +1346,7 @@ body.lock-mode {
   .main-contents .video-create-group .kv-area-m .kv-1 {
     position: absolute;
     left: 57px;
-    top: 267px;
+    top: 307px;
     width: 342px;
     height: 516px;
     margin-left: 0px;
@@ -1357,7 +1357,7 @@ body.lock-mode {
   .main-contents .video-create-group .kv-area-m .kv-2 {
     position: absolute;
     left: 57px;
-    top: 267px;
+    top: 307px;
     width: 342px;
     height: 516px;
     margin-left: 480px;
@@ -1368,7 +1368,7 @@ body.lock-mode {
   .main-contents .video-create-group .kv-area-m .kv-3 {
     position: absolute;
     left: 57px;
-    top: 267px;
+    top: 307px;
     width: 342px;
     height: 516px;
     margin-left: 960px;
